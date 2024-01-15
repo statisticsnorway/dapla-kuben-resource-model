@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>no.ssb.dapla.kuben</groupId>
+    <artifactId>dapla-kuben-resource-model</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>dapla-kuben-resource-model</name>
+
+    <properties>
+        <jdk.version>21</jdk.version>
+        <maven.compiler.target>${jdk.version}</maven.compiler.target>
+        <maven.compiler.source>${jdk.version}</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <artifact-registry.url>
+            artifactregistry://europe-north1-maven.pkg.dev/artifact-registry-5n/dapla-platform-maven/
+        </artifact-registry.url>
+        <github.repository>statisticsnorway/dapla-kuben-resource-model</github.repository>
+
+        <!-- Dependency versions -->
+        <commons-lang.version>2.6</commons-lang.version>
+        <jackson-databind.version>2.16.0</jackson-databind.version>
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+
+        <!-- Plugin/extension versions -->
+        <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
+        <jsonschema2pojo-maven-plugin.version>1.2.1</jsonschema2pojo-maven-plugin.version>
+        <artifactregistry-maven-wagon.version>2.1.4</artifactregistry-maven-wagon.version>
+    </properties>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/${github.repository}.git</developerConnection>
+        <url>https://github.com/${github.repository}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation-api.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                    <configuration>
+                        <tagNameFormat>java-v@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.jsonschema2pojo</groupId>
+                    <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                    <version>${jsonschema2pojo-maven-plugin.version}</version>
+                    <configuration>
+                        <sourceDirectory>${basedir}../../../../src</sourceDirectory>
+                        <outputDirectory>${basedir}/src/main/java</outputDirectory>
+                        <targetPackage>no.ssb.dapla.kuben</targetPackage>
+                        <serializable>true</serializable>
+                        <includeConstructors>true</includeConstructors>
+                        <includeJsr303Annotations>true</includeJsr303Annotations>
+                        <useJakartaValidation>true</useJakartaValidation>
+                        <useTitleAsClassname>true</useTitleAsClassname>
+                        <generateBuilders>true</generateBuilders>
+                        <useInnerClassBuilders>true</useInnerClassBuilders>
+                        <includes>
+                            <include>**/*.json</include>
+                        </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <extensions>
+            <extension>
+                <groupId>com.google.cloud.artifactregistry</groupId>
+                <artifactId>artifactregistry-maven-wagon</artifactId>
+                <version>${artifactregistry-maven-wagon.version}</version>
+            </extension>
+        </extensions>
+
+    </build>
+
+    <repositories>
+        <repository>
+            <id>artifact-registry</id>
+            <url>${artifact-registry.url}</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>artifact-registry-snapshot</id>
+            <url>${artifact-registry.url}</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <profile>
+            <id>ssb</id>
+            <distributionManagement>
+                <repository>
+                    <id>artifact-registry</id>
+                    <url>${artifact-registry.url}</url>
+                </repository>
+                <snapshotRepository>
+                    <id>artifact-registry-snapshots</id>
+                    <url>${artifact-registry.url}</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/${github.repository}</url>
+        </repository>
+    </distributionManagement>
+
+</project>

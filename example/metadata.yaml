@@ -13,6 +13,35 @@ spec:
     - HEALTH
     - STOCK_SENSITIVE
     - OTHER_SENSITIVE
+  statistical_products:
+    - main_area: "ARBEID_OG_LONN"
+      sub_area: "LEDIGE_STILLINGER"
+      product_code: "sdlkfj"
+      role: "OWNER"
+  areas:
+   - "ARBEID_OG_LØNN"
+   - "BANK_OG_FINANSMARKED"
+   - "BEFOLKNING"
+   - "BYGG_BOLIG_OG_EIENDOM"
+   - "ENERGI_OG_INDUSTRI"
+   - "FOU_TEKNOLOGI_OG_INNOVASJON"
+   - "HELSE_OG_OMSORG"
+   - "INNTEKT_OG_FORBRUK"
+   - "KULTUR_OG_FRITID"
+   - "LANDBRUK_FISKERI_OG_AKVAKULTUR"
+   - "NASJONALREGNSKAP"
+   - "NATUR_AREAL_KLIMA_OG_MILJØ"
+   - "OFFENTLIGE FINANSER"
+   - "PRISER_OG_PRISINDEKSER"
+   - "SOSIALE FORHOLD_OG_KRIMINALITET"
+   - "TRANSPORT_OG_REISELIV"
+   - "UTDANNING"
+   - "UTENRIKSØKONOMI"
+   - "VALG_OG_DEMOKRATI"
+   - "VAREHANDEL_OG_NÆRINGSLIVSTJENESTER"
+   - "VIRKSOMHETER_FORETAK_OG_REGNSKAP"
+
+
 
 
 ---
@@ -60,6 +89,7 @@ spec:
     - OTHER_SENSITIVE
   pii_agreements:
     - Link to agreement in websak+?
+    - lenke som starter med http eller https
   PII_level: "" #basert på begrep introudsert i datatilstand, feks helsedata mer sensitivt enn annet
   source_data:
     - name: freg

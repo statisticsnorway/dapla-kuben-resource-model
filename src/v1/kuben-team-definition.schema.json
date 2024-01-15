@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dapla.ssb.no/kuben/v1/platform-manged-team-metadata.schema.json",
+  "title": "KubenTeamDefinition",
+  "description": "The definition of a team inside Kuben",
+  "type": "object",
+  "properties": {
+    "uniform_name": {
+      "type": "string",
+      "pattern": "^[a-z-]*$"
+    },
+    "display_name": {
+      "type": "string",
+      "description": ""
+    },
+    "gcp": {
+      "type": "object",
+      "properties": {
+        "folder_iam": {
+          "type": "object",
+          "properties": {
+            "dev": {
+              "type": "object",
+              "javaName": "FolderIamDev",
+              "description": "Map of role and list of AD groups to have this role"
+            },
+            "test": {
+              "type": "object",
+              "javaName": "FolderIamTest",
+              "description": "Map of role and list of AD groups to have this role"
+            },
+            "prod": {
+              "type": "object",
+              "javaName": "FolderIamProd",
+              "description": "Map of role and list of AD groups to have this role"
+            }
+          }
+        }
+      }
+    },
+    "github": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "iac_repo": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the iac repo for this team"
+            },
+            "access": {
+              "type": "object",
+              "description": "Map of AD group to github role"
+            }
+          }
+        }
+      }
+    },
+    "atlantis": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the atlantis instance"
+        },
+        "repos": {
+          "type": "array",
+          "description": "Which repositories the team atlantis will monitor",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "artifact_registry": {
+      "type": "object",
+      "properties": {
+        "formats": {
+          "type": "array",
+          "description": "Set of formats - in upper case- to create artifact registries for, as defined in https://cloud.google.com/artifact-registry/docs/supported-formats . Examples is DOCKER, PYTHON",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z-_]*$"
+          }
+        },
+        "repos": {
+          "type": "array",
+          "description": "A list of github repos that should be able to push to artifact registry"
+        }
+      }
+    }
+  },
+  "required": ["display_name", "uniform_name"]
+}

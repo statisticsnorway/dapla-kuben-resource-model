@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/1.0.0/custom-team-metadata.schema.json",
-  "title": "CustomMetadata",
-  "description": "Custom metadata fields that the team manages",
+  "$id": "https://dapla.ssb.no/kuben/v1/additional-team-info.schema.json",
+  "title": "AdditionalTeamInfo",
+  "description": "Additional fields to express custom team information",
   "examples": [
     {
-      "version": "1.0.0",
-      "kind": "CustomMetadata",
+      "version": "kuben/v1",
+      "kind": "AdditionalTeamInfo",
       "metadata": {
         "name": "my-name"
       },
@@ -20,22 +20,22 @@
   "properties": {
     "version": {
       "description": "The version of this specification",
-      "type": "string",
-      "pattern": "^\\d\\.\\d\\.\\d(-(alpha|beta|rc)\\d*)?$"
+      "type": "string"
     },
     "kind": {
       "description": "Which kind of metadata are being described",
       "type": "string",
       "enum": [
-        "CustomMetadata"
+        "AdditionalTeamInfo"
       ]
     },
     "metadata": {
-      "$ref": "https://dapla.ssb.no/1.0.0/metadata-field.schema.json"
+      "$ref": "../partials/v1/team-info-metadata.schema.json"
     },
     "spec": {
       "description": "Custom fields/metadata for the team. All keys must be lowercase (a-z), may contain _",
       "type": "object",
+      "javaName": "AdditionalTeamInfoSpec",
       "propertyNames": {
         "pattern": "^[a-z_]*$"
       },

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/1.0.0/team-metadata.schema.json",
-  "title": "TeamMetadata",
+  "$id": "https://dapla.ssb.no/kuben/v1/team-info.schema.json",
+  "title": "TeamInfo",
   "description": "Predefined metadata fields that the team manages",
   "examples": [
     {
-      "version": "1.0.0",
-      "kind": "TeamMetadata",
+      "version": "kuben/v1",
+      "kind": "TeamInfo",
       "metadata": {
         "name": "my-name"
       },
@@ -19,22 +19,22 @@
   "properties": {
     "version": {
       "description": "The version of this specification",
-      "type": "string",
-      "pattern": "^\\d\\.\\d\\.\\d(-(alpha|beta|rc)\\d*)?$"
+      "type": "string"
     },
     "kind": {
       "description": "Which kind of metadata are being described",
       "type": "string",
       "enum": [
-        "TeamMetadata"
+        "TeamInfo"
       ]
     },
     "metadata": {
-      "$ref": "https://dapla.ssb.no/1.0.0/metadata-field.schema.json"
+      "$ref": "../partials/v1/team-info-metadata.schema.json"
     },
     "spec": {
       "description": "The specification of the concrete metadata for the team. All keys must be lowercase (a-z), may contain _",
       "type": "object",
+      "javaName": "TeamInfoSpec",
       "propertyNames": {
         "pattern": "^[a-z_]*$"
       },
@@ -51,6 +51,10 @@
             "OTHER_SENSITIVE"
           ],
           "description": "WIP, which data content this team handles"
+        },
+        "pii_agreements": {
+          "type": "array",
+          "description": "A list of links to Personal Identifiable Information (PII) agreements are located"
         }
       }
     }
