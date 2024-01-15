@@ -1,0 +1,74 @@
+version: 1.0.0
+kind: TeamMetadata
+metadata:
+  team_name: "{{cookiecutter.team_name}}"
+  content_name: some-name
+# TODO: discuss visibility field
+#  visibility: PRIVATE|PUBLIC
+# TODO: Should we require something in the spec, or just be free text?
+spec:
+  data_content_types:
+    - OPEN
+    - PII
+    - HEALTH
+    - STOCK_SENSITIVE
+    - OTHER_SENSITIVE
+
+
+---
+version: 1.0.0
+kind: PlatformManagedTeamMetadata
+metadata:
+  team_name: "{{cookiecutter.team_name}}"
+  content_name: some-name
+#  visibility: PRIVATE|PUBLIC
+spec:
+  section_code: "{{cookiecutter.department_code}}"
+  iac_ownership:
+  iac_autonomy_level: STANDALONE|PARTIAL|PLATFORM_MANAGED
+  sla: NONE|STANDARD
+
+
+
+---
+
+version: 1.0.0
+kind: PlatformManagedTeamMetadata
+metadata:
+  name: some-name
+spec:
+  support_level: "FULL|NONE/SELF"
+  managed_level: "FULL|SELF"
+  support_agreement: "SELF"
+  iac_managed_by: "DAPLA_PLATFORM_TEAM|SELF_MANGED"
+  iac_responsibility: ""
+  autonomy: "TEAM|FULL|SELF_MANGED / DAPLA_PLATFORM_TEAM|MINIMAL|NONE"
+  autonomy-level: "LOW|MEDIUM|HIGH"
+  self-service-level: "LOW|MEDIUM|HIGH"
+  
+  iac:
+    managed_by: "DAPLA_PLATFORM_TEAM|SELF_MANGED"
+    autonomy_level: ""
+    responsibility: ""
+
+  # Seksjonsledere vil ha kobling til statistikkbanken/registeret: Hvilke statistikker publiserer teamet
+  # Formål for teamet (test eller ikke)
+  datatypes:
+    - PII
+    - HEALTH_DATA
+    - STOCK_DATA
+    - OTHER_SENSITIVE
+  pii_agreements:
+    - Link to agreement in websak+?
+  PII_level: "" #basert på begrep introudsert i datatilstand, feks helsedata mer sensitivt enn annet
+  source_data:
+    - name: freg
+      datatypes:
+        - HEALTH_DATA
+      pii_agreements:
+        - <link to websak>
+  statistical_products:
+    - name: mitt navn
+      statistikkbanken: <link to statistikkbanken/registeret>
+      datatypes:
+        - STOCK_DATA

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dapla.ssb.no/1.0.0/custom-team-metadata.schema.json",
+  "title": "CustomMetadata",
+  "description": "Custom metadata fields that the team manages",
+  "examples": [
+    {
+      "version": "1.0.0",
+      "kind": "CustomMetadata",
+      "metadata": {
+        "name": "my-name"
+      },
+      "spec": {
+        "my-field": "123",
+        "some-other-field": "123"
+      }
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "The version of this specification",
+      "type": "string",
+      "pattern": "^\\d\\.\\d\\.\\d(-(alpha|beta|rc)\\d*)?$"
+    },
+    "kind": {
+      "description": "Which kind of metadata are being described",
+      "type": "string",
+      "enum": [
+        "CustomMetadata"
+      ]
+    },
+    "metadata": {
+      "$ref": "https://dapla.ssb.no/1.0.0/metadata-field.schema.json"
+    },
+    "spec": {
+      "description": "Custom fields/metadata for the team. All keys must be lowercase (a-z), may contain _",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z_]*$"
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "metadata",
+    "spec"
+  ]
+}

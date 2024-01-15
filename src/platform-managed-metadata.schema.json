@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dapla.ssb.no/1.0.0/platform-manged-team-metadata.schema.json",
+  "title": "PlatformManagedTeamMetadata",
+  "description": "Metadata that the platform team manages on behalf of the team",
+  "examples": [
+    {
+      "version": "1.0.0",
+      "kind": "PlatformManagedTeamMetadata",
+      "metadata": {
+        "name": "my-name"
+      },
+      "spec": {
+        "department_code": "123"
+      }
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "The version of this specification",
+      "type": "string",
+      "pattern": "^\\d\\.\\d\\.\\d(-(alpha|beta|rc)\\d*)?$"
+    },
+    "kind": {
+      "description": "Which kind of metadata are being described",
+      "type": "string",
+      "enum": [
+        "PlatformManagedMetadata"
+      ]
+    },
+    "metadata": {
+      "$ref": "/1.0.0/metadata-field.schema.json"
+    },
+    "spec": {
+      "description": "The specification of the concrete metadata for the team. All keys must be lowercase (a-z), may contain _",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z_]*$"
+      },
+      "additionalProperties": false,
+      "required": [
+        "section_code"
+      ],
+      "properties": {
+        "section_code": {
+          "pattern": "[0-9]{3}",
+          "description": "The code of the section this teams belong to"
+        }
+      }
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "metadata",
+    "spec"
+  ]
+}
