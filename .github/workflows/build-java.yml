@@ -35,7 +35,7 @@ jobs:
         uses: google-github-actions/auth@v2.0.1
         with:
           workload_identity_provider: "projects/${{ secrets.GAR_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/gh-actions/providers/gh-actions"
-          service_account: "gh-actions-dapla-stat@${{ secrets.GAR_PROJECT_ID }}.iam.gserviceaccount.com"
+          service_account: "gh-actions-dapla-platform@${{ secrets.GAR_PROJECT_ID }}.iam.gserviceaccount.com"
           token_format: access_token
 
       - name: Cache Maven packages
