@@ -1,0 +1,60 @@
+
+on:
+  push:
+    branches:
+    - "**"
+    - "!main"
+    paths:
+    - "src/**"
+    - "generated/java/dapla-kuben-resource-model/pom.xml"
+    - ".github/workflows/generate-java.yml"
+
+# Allow only one generate workflow to run at a time. This avoids race conditions when
+# pushing to the same branch.
+concurrency: "generate"
+
+jobs:
+  generate-java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.DAPLA_BOT_APP_ID }}
+          private-key: ${{ secrets.DAPLA_BOT_PRIVATE_KEY }}
+
+      # Checkout using the token. This will persist the token for use in later steps.
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "dapla-bot[bot]"
+          git config user.email "143391972+dapla-bot[bot]@users.noreply.github.com"
+
+      - name: Generate Java
+        run: |
+            pushd generated/java/dapla-kuben-resource-model
+            rm -rf src/main/java
+            ./mvnw jsonschema2pojo:generate
+            popd
+
+      - name: Check for modified files
+        id: git-check
+        run: echo modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)  >> $GITHUB_OUTPUT
+
+      - name: Commit
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+            git add -A
+            git commit -m '[GENERATE] Java classes from JSON Schema'
+
+      - name: Push
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+            git pull --rebase origin "${GITHUB_REF}"
+            git push origin "${GITHUB_REF}"
