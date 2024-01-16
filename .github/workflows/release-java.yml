@@ -63,7 +63,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          pushd generated/java/datadoc-model
+          pushd generated/java/dapla-kuben-resource-model
           # Get the release version from the pom.xml before the next snapshot increment
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed "s/-SNAPSHOT//")
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
@@ -86,7 +86,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          pushd generated/java/datadoc-model
+          pushd generated/java/dapla-kuben-resource-model
           ARTIFACT_ID=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           # Get all files matching the artifact id and version (source, javadoc, etc.)
           ARTIFACT_GLOB=(./target/$ARTIFACT_ID-${{ steps.release_jar.outputs.version }}*.jar)

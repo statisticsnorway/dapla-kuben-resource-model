@@ -36,8 +36,7 @@ autolabeler:
   - label: 'documentation'
     files:
       - 'README.md'
-      - 'generated/java/datadoc-model/README.md'
-      - 'generated/python/datadoc_model/README.md'
+      - 'generated/java/dapla-kuben-resource-model/README.md'
   - label: 'bug'
     branch:
       - '/fix\/.+/'
