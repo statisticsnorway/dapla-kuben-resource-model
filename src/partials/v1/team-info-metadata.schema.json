@@ -22,6 +22,7 @@
     "visibility": {
       "description": "Whenever the metadata in this manifest is considered to be exposed in e.g. a portal. Will default to public if not specified",
       "type": "string",
+      "default": "PUBLIC",
       "enum": [
         "PRIVATE",
         "PUBLIC"

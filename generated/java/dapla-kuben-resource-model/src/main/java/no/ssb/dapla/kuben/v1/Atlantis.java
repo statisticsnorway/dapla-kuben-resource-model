@@ -148,8 +148,8 @@ public class Atlantis implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
-        result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
+        result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         return result;
     }
 
@@ -162,7 +162,7 @@ public class Atlantis implements Serializable
             return false;
         }
         Atlantis rhs = ((Atlantis) other);
-        return ((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return ((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
     }
 
     public static class AtlantisBuilder

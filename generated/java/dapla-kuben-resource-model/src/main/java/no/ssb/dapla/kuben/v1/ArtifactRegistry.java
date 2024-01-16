@@ -144,8 +144,8 @@ public class ArtifactRegistry implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.formats == null)? 0 :this.formats.hashCode()));
-        result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
+        result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         return result;
     }
 
@@ -158,7 +158,7 @@ public class ArtifactRegistry implements Serializable
             return false;
         }
         ArtifactRegistry rhs = ((ArtifactRegistry) other);
-        return ((((this.formats == rhs.formats)||((this.formats!= null)&&this.formats.equals(rhs.formats)))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return ((((this.formats == rhs.formats)||((this.formats!= null)&&this.formats.equals(rhs.formats)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
     }
 
     public static class ArtifactRegistryBuilder

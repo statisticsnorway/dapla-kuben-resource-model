@@ -49,7 +49,7 @@ public class TeamInfoMetadataSchema implements Serializable
      */
     @JsonProperty("visibility")
     @JsonPropertyDescription("Whenever the metadata in this manifest is considered to be exposed in e.g. a portal. Will default to public if not specified")
-    private TeamInfoMetadataSchema.Visibility visibility;
+    private TeamInfoMetadataSchema.Visibility visibility = TeamInfoMetadataSchema.Visibility.fromValue("PUBLIC");
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
@@ -155,8 +155,8 @@ public class TeamInfoMetadataSchema implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.teamName == null)? 0 :this.teamName.hashCode()));
-        result = ((result* 31)+((this.visibility == null)? 0 :this.visibility.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
+        result = ((result* 31)+((this.visibility == null)? 0 :this.visibility.hashCode()));
         return result;
     }
 
@@ -169,7 +169,7 @@ public class TeamInfoMetadataSchema implements Serializable
             return false;
         }
         TeamInfoMetadataSchema rhs = ((TeamInfoMetadataSchema) other);
-        return ((((this.teamName == rhs.teamName)||((this.teamName!= null)&&this.teamName.equals(rhs.teamName)))&&((this.visibility == rhs.visibility)||((this.visibility!= null)&&this.visibility.equals(rhs.visibility))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return ((((this.teamName == rhs.teamName)||((this.teamName!= null)&&this.teamName.equals(rhs.teamName)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.visibility == rhs.visibility)||((this.visibility!= null)&&this.visibility.equals(rhs.visibility))));
     }
 
     public static class TeamInfoMetadataSchemaBuilder
