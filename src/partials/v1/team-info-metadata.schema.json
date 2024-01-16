@@ -5,16 +5,23 @@
   "examples": [
     {
       "team_name": "dapla-platform",
+      "name": "team-information",
       "visibility": "PUBLIC",
       "other_metadata_field": "foo"
     }
   ],
   "required": [
-    "team_name"
+    "team_name",
+    "name"
   ],
   "type": "object",
   "properties": {
     "team_name": {
+      "description": "The (uniform) name of this team",
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
       "description": "Name of this resource",
       "type": "string",
       "minLength": 1

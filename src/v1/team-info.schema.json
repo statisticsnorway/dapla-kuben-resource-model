@@ -8,10 +8,25 @@
       "version": "kuben/v1",
       "kind": "TeamInfo",
       "metadata": {
-        "name": "my-name"
+        "team-name": "my-team-name",
+        "name": "team-info"
       },
       "spec": {
-        "some_key": "123"
+        "source_data_classification": [
+          {
+            "short_name": "PII"
+          },
+          {
+            "short_name": "CONSENT_BASED"
+          }
+        ],
+        "statistical_products": {
+          "short_name": "eiendom_kostra"
+        },
+        "pii_agreements": [
+          "https://ssb.no/pii-agreement-1",
+          "https://ssb.no/pii-agreement-2"
+        ]
       }
     }
   ],
@@ -19,7 +34,8 @@
   "properties": {
     "version": {
       "description": "The version of this specification",
-      "type": "string"
+      "type": "string",
+      "pattern": "^kuben/v[0-9]+$"
     },
     "kind": {
       "description": "Which kind of metadata are being described",
@@ -39,22 +55,43 @@
         "pattern": "^[a-z_]*$"
       },
       "additionalProperties": false,
-      "required": ["data_content_types"],
       "properties": {
-        "data_content_types": {
+        "source_data_classification": {
           "type": "array",
-          "enum":[
-            "OPEN",
-            "PII",
-            "HEALTH",
-            "STOCK_SENSITIVE",
-            "OTHER_SENSITIVE"
-          ],
-          "description": "WIP, which data content this team handles"
+          "description": "Which type of source data this team handles",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "PII",
+              "CONSENT_BASED",
+              "MARKET_SENSITIVE",
+              "OTHER_SENSITIVE"
+            ],
+            "$comment": "CONSENT_BASED = (samtykkebasert undersøkelse)"
+          }
         },
-        "pii_agreements": {
+        "statistical_products": {
           "type": "array",
-          "description": "A list of links to Personal Identifiable Information (PII) agreements are located"
+          "description": "A list of all the statistical products this team produces",
+          "items": {
+            "type": "object",
+            "properties": {
+              "short_name": {
+                "type": "string",
+                "description": "The short name of the statistical product, e.g. eiendom_kostra, elkraftpris, arkpi",
+                "pattern": "^[a-z_]*$"
+              }
+            }
+          }
+        },
+        "dpia_links": {
+          "type": "array",
+          "description": "A list of links to Personal Identifiable Information (PII) agreements are located",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       }
     }

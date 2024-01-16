@@ -3,15 +3,12 @@
   "$id": "https://dapla.ssb.no/kuben/v1/platform-manged-team-metadata.schema.json",
   "title": "KubenTeamDefinition",
   "description": "The definition of a team inside Kuben",
+  "$comment": "Fields that are important for the technical configuration of a team",
   "type": "object",
   "properties": {
     "uniform_name": {
       "type": "string",
       "pattern": "^[a-z-]*$"
-    },
-    "display_name": {
-      "type": "string",
-      "description": ""
     },
     "gcp": {
       "type": "object",
@@ -92,5 +89,5 @@
       }
     }
   },
-  "required": ["display_name", "uniform_name"]
+  "required": ["uniform_name"]
 }

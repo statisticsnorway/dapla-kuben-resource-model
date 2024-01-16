@@ -2,16 +2,19 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://dapla.ssb.no/kuben/v1/platform-managed-team-info.schema.json",
   "title": "PlatformManagedTeamInfo",
-  "description": "Metadata that the platform team manages on behalf of the team",
+  "description": "Information about the team that the platform team manages.",
+  "$comment": "Team information that is not strictly required for configuration of the team",
   "examples": [
     {
       "version": "kuben/v1",
       "kind": "PlatformManagedTeamInfo",
       "metadata": {
-        "name": "my-name"
+        "team_name": "dapla-platform",
+        "name": "team-info"
       },
       "spec": {
-        "department_code": "123"
+        "section_code": "724",
+        "display_name": "Dapla Platform"
       }
     }
   ],
@@ -19,7 +22,8 @@
   "properties": {
     "version": {
       "description": "The version of this specification",
-      "type": "string"
+      "type": "string",
+      "pattern": "^kuben/v[0-9]+$"
     },
     "kind": {
       "description": "Which kind of metadata are being described",
@@ -47,6 +51,10 @@
           "type": "string",
           "pattern": "[0-9]{3}",
           "description": "The code of the section this teams belong to"
+        },
+        "display_name": {
+          "type": "string",
+          "description": "The display name of the team"
         }
       }
     }

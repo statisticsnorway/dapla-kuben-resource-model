@@ -3,6 +3,7 @@
   "$id": "https://dapla.ssb.no/kuben/v1/additional-team-info.schema.json",
   "title": "AdditionalTeamInfo",
   "description": "Additional fields to express custom team information",
+  "$comment": "Information the team can add without any restrictions on what kind of data is specified. Can be useful in situations where teams want to express or communicate some kind of information without it fitting the defined team info model.",
   "examples": [
     {
       "version": "kuben/v1",
@@ -20,7 +21,8 @@
   "properties": {
     "version": {
       "description": "The version of this specification",
-      "type": "string"
+      "type": "string",
+      "pattern": "^kuben/v[0-9]+$"
     },
     "kind": {
       "description": "Which kind of metadata are being described",

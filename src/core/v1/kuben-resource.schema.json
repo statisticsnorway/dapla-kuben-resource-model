@@ -2,11 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://dapla.ssb.no/core/v1/kuben-resource.schema.json",
   "title": "KubenResource",
-  "description": "Base container for Kuben resources",
+  "description": "Base definition of how Kuben resources should be defined.",
   "type": "object",
   "properties": {
     "version": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-z/]*[a-z]\/v[0-9]+$"
     },
     "kind": {
       "type": "string"
