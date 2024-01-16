@@ -50,7 +50,7 @@ jobs:
       - name: Configure Git user
         run: |
           git config user.name "dapla-bot[bot]"
-          git config user.email "143391972+dapla-bot[bot]@users.noreply.github.com"
+          git config user.email "${{ secrets.DAPLA_BOT_APP_ID }}+dapla-bot[bot]@users.noreply.github.com"
 
       - name: Setup Maven authentication to GitHub packages
         uses: s4u/maven-settings-action@v2.8.0
