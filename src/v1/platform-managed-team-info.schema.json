@@ -44,7 +44,8 @@
       },
       "additionalProperties": false,
       "required": [
-        "section_code"
+        "section_code",
+        "display_name"
       ],
       "properties": {
         "section_code": {
