@@ -1,0 +1,87 @@
+name-template: 'java-v$RESOLVED_VERSION'
+tag-template: 'java-v$RESOLVED_VERSION'
+tag-prefix: 'java-v'
+
+categories:
+  - title: ":notebook: Model"
+    label: "json-schema"
+  - title: ":coffee: Java"
+    label: "java"
+  - title: ":boom: Breaking Changes"
+    label: "breaking"
+  - title: ":rocket: Features"
+    label: "enhancement"
+  - title: ":fire: Removals and Deprecations"
+    label: "removal"
+  - title: ":beetle: Fixes"
+    label: "bug"
+  - title: ":racehorse: Performance"
+    label: "performance"
+  - title: ":rotating_light: Testing"
+    label: "testing"
+  - title: ":construction_worker: Continuous Integration"
+    label: "ci"
+  - title: ":books: Documentation"
+    label: "documentation"
+  - title: ":hammer: Refactoring"
+    label: "refactoring"
+  - title: ":lipstick: Style"
+    label: "style"
+  - title: ":package: Dependencies"
+    labels:
+      - "dependencies"
+      - "build"
+
+autolabeler:
+  - label: 'documentation'
+    files:
+      - 'README.md'
+      - 'generated/java/datadoc-model/README.md'
+      - 'generated/python/datadoc_model/README.md'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'enhancement'
+    branch:
+      - '/feat\/.+/'
+    body:
+      - '/JIRA-[0-9]{1,4}/'
+  - label: 'refactoring'
+    branch:
+      - '/refactor\/.+/'
+    title:
+      - '/^refactor/i'
+  - label: 'testing'
+    branch:
+      - '/test\/.+/'
+  - label: 'breaking'
+    title:
+      - '/breaking change/i'
+  - label: 'ci'
+    files:
+      - '.github/*'
+  - label: 'json-schema'
+    files:
+      - 'src/*'
+  - label: 'java'
+    files:
+      - 'generated/java/*'
+
+template: |
+  ## Changes
+
+  $CHANGES
+
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
