@@ -14,7 +14,7 @@ import jakarta.validation.Valid;
 
 
 /**
- * Map of role and list of AD groups to have this role
+ * Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

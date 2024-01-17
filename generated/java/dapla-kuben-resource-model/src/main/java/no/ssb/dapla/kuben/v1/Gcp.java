@@ -21,6 +21,10 @@ import jakarta.validation.Valid;
 public class Gcp implements Serializable
 {
 
+    /**
+     * Should be implemented by patternProperties, but that is not supported by the jsonschema library we use. See https://github.com/joelittlejohn/jsonschema2pojo/issues/182
+     * 
+     */
     @JsonProperty("folder_iam")
     @Valid
     private FolderIam folderIam;
@@ -45,11 +49,19 @@ public class Gcp implements Serializable
         return new Gcp.GcpBuilder();
     }
 
+    /**
+     * Should be implemented by patternProperties, but that is not supported by the jsonschema library we use. See https://github.com/joelittlejohn/jsonschema2pojo/issues/182
+     * 
+     */
     @JsonProperty("folder_iam")
     public FolderIam getFolderIam() {
         return folderIam;
     }
 
+    /**
+     * Should be implemented by patternProperties, but that is not supported by the jsonschema library we use. See https://github.com/joelittlejohn/jsonschema2pojo/issues/182
+     * 
+     */
     @JsonProperty("folder_iam")
     public void setFolderIam(FolderIam folderIam) {
         this.folderIam = folderIam;
