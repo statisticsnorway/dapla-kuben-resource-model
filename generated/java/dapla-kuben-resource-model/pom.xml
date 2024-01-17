@@ -61,6 +61,7 @@
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
                         <tagNameFormat>java-v@{project.version}</tagNameFormat>
+                        <localCheckout>true</localCheckout>
                     </configuration>
                 </plugin>
                 <plugin>
