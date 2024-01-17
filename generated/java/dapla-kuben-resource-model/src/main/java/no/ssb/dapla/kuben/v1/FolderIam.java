@@ -14,6 +14,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
 
+
+/**
+ * Should be implemented by patternProperties, but that is not supported by the jsonschema library we use. See https://github.com/joelittlejohn/jsonschema2pojo/issues/182
+ * 
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "dev",
@@ -26,29 +31,29 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "dev" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "dev" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("dev")
-    @JsonPropertyDescription("Map of role and list of AD groups to have this role")
+    @JsonPropertyDescription("Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no")
     @Valid
     private FolderIamDev folderIamDev;
     /**
      * 
-     * Corresponds to the "test" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "test" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("test")
-    @JsonPropertyDescription("Map of role and list of AD groups to have this role")
+    @JsonPropertyDescription("Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no")
     @Valid
     private FolderIamTest folderIamTest;
     /**
      * 
-     * Corresponds to the "prod" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "prod" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("prod")
-    @JsonPropertyDescription("Map of role and list of AD groups to have this role")
+    @JsonPropertyDescription("Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no")
     @Valid
     private FolderIamProd folderIamProd;
     @JsonIgnore
@@ -66,11 +71,11 @@ public class FolderIam implements Serializable
     /**
      * 
      * @param folderIamProd
-     *     Map of role and list of AD groups to have this role.
+     *     Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no.
      * @param folderIamTest
-     *     Map of role and list of AD groups to have this role.
+     *     Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no.
      * @param folderIamDev
-     *     Map of role and list of AD groups to have this role.
+     *     Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no.
      */
     public FolderIam(FolderIamDev folderIamDev, FolderIamTest folderIamTest, FolderIamProd folderIamProd) {
         super();
@@ -85,7 +90,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "dev" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "dev" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("dev")
@@ -95,7 +100,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "dev" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "dev" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("dev")
@@ -105,7 +110,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "test" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "test" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("test")
@@ -115,7 +120,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "test" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "test" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("test")
@@ -125,7 +130,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "prod" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "prod" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("prod")
@@ -135,7 +140,7 @@ public class FolderIam implements Serializable
 
     /**
      * 
-     * Corresponds to the "prod" property.Map of role and list of AD groups to have this role
+     * Corresponds to the "prod" property.Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no
      * 
      */
     @JsonProperty("prod")
