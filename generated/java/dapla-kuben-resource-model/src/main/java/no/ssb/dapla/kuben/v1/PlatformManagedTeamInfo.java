@@ -17,13 +17,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import no.ssb.dapla.kuben.partials.v1.TeamInfoMetadataSchema;
 
 
 /**
  * PlatformManagedTeamInfo
  * <p>
- * Metadata that the platform team manages on behalf of the team
+ * Information about the team that the platform team manages.Team information that is not strictly required for configuration of the team
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -44,6 +45,7 @@ public class PlatformManagedTeamInfo implements Serializable
      */
     @JsonProperty("version")
     @JsonPropertyDescription("The version of this specification")
+    @Pattern(regexp = "^kuben/v[0-9]+$")
     @NotNull
     private String version;
     /**

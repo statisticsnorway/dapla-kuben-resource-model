@@ -13,12 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 
 /**
  * KubenResource
  * <p>
- * Base container for Kuben resources
+ * Base definition of how Kuben resources should be defined.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -38,6 +39,7 @@ public class KubenResource implements Serializable
      * 
      */
     @JsonProperty("version")
+    @Pattern(regexp = "^[a-z/]*[a-z]/v[0-9]+$")
     @NotNull
     private String version;
     /**

@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import no.ssb.dapla.kuben.partials.v1.TeamInfoMetadataSchema;
 
 
@@ -44,6 +45,7 @@ public class TeamInfo implements Serializable
      */
     @JsonProperty("version")
     @JsonPropertyDescription("The version of this specification")
+    @Pattern(regexp = "^kuben/v[0-9]+$")
     @NotNull
     private String version;
     /**

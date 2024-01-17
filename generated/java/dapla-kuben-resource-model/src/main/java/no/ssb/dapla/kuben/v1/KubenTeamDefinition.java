@@ -20,7 +20,7 @@ import jakarta.validation.constraints.Pattern;
 /**
  * KubenTeamDefinition
  * <p>
- * The definition of a team inside Kuben
+ * The definition of a team inside Kuben Fields that are important for the technical configuration of a team
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -46,12 +46,12 @@ public class KubenTeamDefinition implements Serializable
     @NotNull
     private String uniformName;
     /**
-     * 
+     * The human readable form of the teams name
      * (Required)
      * 
      */
     @JsonProperty("display_name")
-    @JsonPropertyDescription("")
+    @JsonPropertyDescription("The human readable form of the teams name")
     @NotNull
     private String displayName;
     @JsonProperty("gcp")
@@ -78,6 +78,11 @@ public class KubenTeamDefinition implements Serializable
     public KubenTeamDefinition() {
     }
 
+    /**
+     * 
+     * @param displayName
+     *     The human readable form of the teams name.
+     */
     public KubenTeamDefinition(String uniformName, String displayName, Gcp gcp, Github github, Atlantis atlantis, ArtifactRegistry artifactRegistry) {
         super();
         this.uniformName = uniformName;
@@ -113,7 +118,7 @@ public class KubenTeamDefinition implements Serializable
     }
 
     /**
-     * 
+     * The human readable form of the teams name
      * (Required)
      * 
      */
@@ -123,7 +128,7 @@ public class KubenTeamDefinition implements Serializable
     }
 
     /**
-     * 
+     * The human readable form of the teams name
      * (Required)
      * 
      */

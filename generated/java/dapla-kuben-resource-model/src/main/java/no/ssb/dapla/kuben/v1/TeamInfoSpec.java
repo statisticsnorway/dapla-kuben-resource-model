@@ -2,19 +2,15 @@
 package no.ssb.dapla.kuben.v1;
 
 import java.io.Serializable;
+import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.processing.Generated;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 
 /**
@@ -23,32 +19,39 @@ import jakarta.validation.constraints.NotNull;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "data_content_types",
-    "pii_agreements"
+    "source_data_classification",
+    "statistical_products",
+    "dpia_links"
 })
 @Generated("jsonschema2pojo")
 public class TeamInfoSpec implements Serializable
 {
 
     /**
-     * WIP, which data content this team handles
-     * (Required)
+     * Which type of source data this team handles
      * 
      */
-    @JsonProperty("data_content_types")
-    @JsonPropertyDescription("WIP, which data content this team handles")
+    @JsonProperty("source_data_classification")
+    @JsonPropertyDescription("Which type of source data this team handles")
     @Valid
-    @NotNull
-    private TeamInfoSpec.DataContentTypes dataContentTypes;
+    private List<SourceDataClassification> sourceDataClassification = new ArrayList<SourceDataClassification>();
+    /**
+     * A list of all the statistical products this team produces
+     * 
+     */
+    @JsonProperty("statistical_products")
+    @JsonPropertyDescription("A list of all the statistical products this team produces")
+    @Valid
+    private List<StatisticalProduct> statisticalProducts = new ArrayList<StatisticalProduct>();
     /**
      * A list of links to Personal Identifiable Information (PII) agreements are located
      * 
      */
-    @JsonProperty("pii_agreements")
+    @JsonProperty("dpia_links")
     @JsonPropertyDescription("A list of links to Personal Identifiable Information (PII) agreements are located")
     @Valid
-    private List<Object> piiAgreements = new ArrayList<Object>();
-    private final static long serialVersionUID = -2334493064795374495L;
+    private List<URI> dpiaLinks = new ArrayList<URI>();
+    private final static long serialVersionUID = 4396638684417242975L;
 
     /**
      * No args constructor for use in serialization
@@ -59,15 +62,18 @@ public class TeamInfoSpec implements Serializable
 
     /**
      * 
-     * @param dataContentTypes
-     *     WIP, which data content this team handles.
-     * @param piiAgreements
+     * @param statisticalProducts
+     *     A list of all the statistical products this team produces.
+     * @param sourceDataClassification
+     *     Which type of source data this team handles.
+     * @param dpiaLinks
      *     A list of links to Personal Identifiable Information (PII) agreements are located.
      */
-    public TeamInfoSpec(TeamInfoSpec.DataContentTypes dataContentTypes, List<Object> piiAgreements) {
+    public TeamInfoSpec(List<SourceDataClassification> sourceDataClassification, List<StatisticalProduct> statisticalProducts, List<URI> dpiaLinks) {
         super();
-        this.dataContentTypes = dataContentTypes;
-        this.piiAgreements = piiAgreements;
+        this.sourceDataClassification = sourceDataClassification;
+        this.statisticalProducts = statisticalProducts;
+        this.dpiaLinks = dpiaLinks;
     }
 
     public static TeamInfoSpec.TeamInfoSpecBuilderBase builder() {
@@ -75,54 +81,74 @@ public class TeamInfoSpec implements Serializable
     }
 
     /**
-     * WIP, which data content this team handles
-     * (Required)
+     * Which type of source data this team handles
      * 
      */
-    @JsonProperty("data_content_types")
-    public TeamInfoSpec.DataContentTypes getDataContentTypes() {
-        return dataContentTypes;
+    @JsonProperty("source_data_classification")
+    public List<SourceDataClassification> getSourceDataClassification() {
+        return sourceDataClassification;
     }
 
     /**
-     * WIP, which data content this team handles
-     * (Required)
+     * Which type of source data this team handles
      * 
      */
-    @JsonProperty("data_content_types")
-    public void setDataContentTypes(TeamInfoSpec.DataContentTypes dataContentTypes) {
-        this.dataContentTypes = dataContentTypes;
+    @JsonProperty("source_data_classification")
+    public void setSourceDataClassification(List<SourceDataClassification> sourceDataClassification) {
+        this.sourceDataClassification = sourceDataClassification;
+    }
+
+    /**
+     * A list of all the statistical products this team produces
+     * 
+     */
+    @JsonProperty("statistical_products")
+    public List<StatisticalProduct> getStatisticalProducts() {
+        return statisticalProducts;
+    }
+
+    /**
+     * A list of all the statistical products this team produces
+     * 
+     */
+    @JsonProperty("statistical_products")
+    public void setStatisticalProducts(List<StatisticalProduct> statisticalProducts) {
+        this.statisticalProducts = statisticalProducts;
     }
 
     /**
      * A list of links to Personal Identifiable Information (PII) agreements are located
      * 
      */
-    @JsonProperty("pii_agreements")
-    public List<Object> getPiiAgreements() {
-        return piiAgreements;
+    @JsonProperty("dpia_links")
+    public List<URI> getDpiaLinks() {
+        return dpiaLinks;
     }
 
     /**
      * A list of links to Personal Identifiable Information (PII) agreements are located
      * 
      */
-    @JsonProperty("pii_agreements")
-    public void setPiiAgreements(List<Object> piiAgreements) {
-        this.piiAgreements = piiAgreements;
+    @JsonProperty("dpia_links")
+    public void setDpiaLinks(List<URI> dpiaLinks) {
+        this.dpiaLinks = dpiaLinks;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(TeamInfoSpec.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("dataContentTypes");
+        sb.append("sourceDataClassification");
         sb.append('=');
-        sb.append(((this.dataContentTypes == null)?"<null>":this.dataContentTypes));
+        sb.append(((this.sourceDataClassification == null)?"<null>":this.sourceDataClassification));
         sb.append(',');
-        sb.append("piiAgreements");
+        sb.append("statisticalProducts");
         sb.append('=');
-        sb.append(((this.piiAgreements == null)?"<null>":this.piiAgreements));
+        sb.append(((this.statisticalProducts == null)?"<null>":this.statisticalProducts));
+        sb.append(',');
+        sb.append("dpiaLinks");
+        sb.append('=');
+        sb.append(((this.dpiaLinks == null)?"<null>":this.dpiaLinks));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -135,8 +161,9 @@ public class TeamInfoSpec implements Serializable
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.dataContentTypes == null)? 0 :this.dataContentTypes.hashCode()));
-        result = ((result* 31)+((this.piiAgreements == null)? 0 :this.piiAgreements.hashCode()));
+        result = ((result* 31)+((this.statisticalProducts == null)? 0 :this.statisticalProducts.hashCode()));
+        result = ((result* 31)+((this.sourceDataClassification == null)? 0 :this.sourceDataClassification.hashCode()));
+        result = ((result* 31)+((this.dpiaLinks == null)? 0 :this.dpiaLinks.hashCode()));
         return result;
     }
 
@@ -149,50 +176,7 @@ public class TeamInfoSpec implements Serializable
             return false;
         }
         TeamInfoSpec rhs = ((TeamInfoSpec) other);
-        return (((this.dataContentTypes == rhs.dataContentTypes)||((this.dataContentTypes!= null)&&this.dataContentTypes.equals(rhs.dataContentTypes)))&&((this.piiAgreements == rhs.piiAgreements)||((this.piiAgreements!= null)&&this.piiAgreements.equals(rhs.piiAgreements))));
-    }
-
-
-    /**
-     * WIP, which data content this team handles
-     * 
-     */
-    @Generated("jsonschema2pojo")
-    public enum DataContentTypes {
-
-        OPEN(null),
-        PII(null),
-        HEALTH(null),
-        STOCK_SENSITIVE(null),
-        OTHER_SENSITIVE(null);
-        private final List<Object> value;
-        private final static Map<List<Object> , TeamInfoSpec.DataContentTypes> CONSTANTS = new HashMap<List<Object> , TeamInfoSpec.DataContentTypes>();
-
-        static {
-            for (TeamInfoSpec.DataContentTypes c: values()) {
-                CONSTANTS.put(c.value, c);
-            }
-        }
-
-        DataContentTypes(List<Object> value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public List<Object> value() {
-            return this.value;
-        }
-
-        @JsonCreator
-        public static TeamInfoSpec.DataContentTypes fromValue(List<Object> value) {
-            TeamInfoSpec.DataContentTypes constant = CONSTANTS.get(value);
-            if (constant == null) {
-                throw new IllegalArgumentException((value +""));
-            } else {
-                return constant;
-            }
-        }
-
+        return ((((this.statisticalProducts == rhs.statisticalProducts)||((this.statisticalProducts!= null)&&this.statisticalProducts.equals(rhs.statisticalProducts)))&&((this.sourceDataClassification == rhs.sourceDataClassification)||((this.sourceDataClassification!= null)&&this.sourceDataClassification.equals(rhs.sourceDataClassification))))&&((this.dpiaLinks == rhs.dpiaLinks)||((this.dpiaLinks!= null)&&this.dpiaLinks.equals(rhs.dpiaLinks))));
     }
 
     public static class TeamInfoSpecBuilder
@@ -204,8 +188,8 @@ public class TeamInfoSpec implements Serializable
             super();
         }
 
-        public TeamInfoSpecBuilder(TeamInfoSpec.DataContentTypes dataContentTypes, List<Object> piiAgreements) {
-            super(dataContentTypes, piiAgreements);
+        public TeamInfoSpecBuilder(List<SourceDataClassification> sourceDataClassification, List<StatisticalProduct> statisticalProducts, List<URI> dpiaLinks) {
+            super(sourceDataClassification, statisticalProducts, dpiaLinks);
         }
 
     }
@@ -223,10 +207,10 @@ public class TeamInfoSpec implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public TeamInfoSpecBuilderBase(TeamInfoSpec.DataContentTypes dataContentTypes, List<Object> piiAgreements) {
+        public TeamInfoSpecBuilderBase(List<SourceDataClassification> sourceDataClassification, List<StatisticalProduct> statisticalProducts, List<URI> dpiaLinks) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(TeamInfoSpec.TeamInfoSpecBuilder.class)) {
-                this.instance = ((T) new TeamInfoSpec(dataContentTypes, piiAgreements));
+                this.instance = ((T) new TeamInfoSpec(sourceDataClassification, statisticalProducts, dpiaLinks));
             }
         }
 
@@ -237,13 +221,18 @@ public class TeamInfoSpec implements Serializable
             return result;
         }
 
-        public TeamInfoSpec.TeamInfoSpecBuilderBase withDataContentTypes(TeamInfoSpec.DataContentTypes dataContentTypes) {
-            ((TeamInfoSpec) this.instance).dataContentTypes = dataContentTypes;
+        public TeamInfoSpec.TeamInfoSpecBuilderBase withSourceDataClassification(List<SourceDataClassification> sourceDataClassification) {
+            ((TeamInfoSpec) this.instance).sourceDataClassification = sourceDataClassification;
             return this;
         }
 
-        public TeamInfoSpec.TeamInfoSpecBuilderBase withPiiAgreements(List<Object> piiAgreements) {
-            ((TeamInfoSpec) this.instance).piiAgreements = piiAgreements;
+        public TeamInfoSpec.TeamInfoSpecBuilderBase withStatisticalProducts(List<StatisticalProduct> statisticalProducts) {
+            ((TeamInfoSpec) this.instance).statisticalProducts = statisticalProducts;
+            return this;
+        }
+
+        public TeamInfoSpec.TeamInfoSpecBuilderBase withDpiaLinks(List<URI> dpiaLinks) {
+            ((TeamInfoSpec) this.instance).dpiaLinks = dpiaLinks;
             return this;
         }
 
