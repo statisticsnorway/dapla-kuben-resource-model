@@ -42,7 +42,10 @@
       ]
     },
     "metadata": {
-      "$ref": "../partials/v1/team-info-metadata.schema.json"
+      "$ref": "../partials/v1/team-info-metadata.schema.json",
+      "required": [
+        "team_name"
+      ]
     },
     "spec": {
       "description": "The specification of the concrete metadata for the team. All keys must be lowercase (a-z), may contain _",
