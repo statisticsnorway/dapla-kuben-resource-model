@@ -8,22 +8,19 @@
       "version": "kuben/v1",
       "kind": "TeamInfo",
       "metadata": {
-        "team-name": "my-team-name",
-        "name": "team-info"
+        "team_name": "my-team-name"
       },
       "spec": {
         "source_data_classification": [
+          "PII",
+          "CONSENT_BASED"
+        ],
+        "statistical_products": [
           {
-            "short_name": "PII"
-          },
-          {
-            "short_name": "CONSENT_BASED"
+            "short_name": "eiendom_kostra"
           }
         ],
-        "statistical_products": {
-          "short_name": "eiendom_kostra"
-        },
-        "pii_agreements": [
+        "dpia_links": [
           "https://ssb.no/pii-agreement-1",
           "https://ssb.no/pii-agreement-2"
         ]
@@ -87,7 +84,7 @@
         },
         "dpia_links": {
           "type": "array",
-          "description": "A list of links to Personal Identifiable Information (PII) agreements are located",
+          "description": "A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)",
           "items": {
             "type": "string",
             "format": "uri"

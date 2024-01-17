@@ -44,11 +44,11 @@ public class TeamInfoSpec implements Serializable
     @Valid
     private List<StatisticalProduct> statisticalProducts = new ArrayList<StatisticalProduct>();
     /**
-     * A list of links to Personal Identifiable Information (PII) agreements are located
+     * A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)
      * 
      */
     @JsonProperty("dpia_links")
-    @JsonPropertyDescription("A list of links to Personal Identifiable Information (PII) agreements are located")
+    @JsonPropertyDescription("A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)")
     @Valid
     private List<URI> dpiaLinks = new ArrayList<URI>();
     private final static long serialVersionUID = 4396638684417242975L;
@@ -67,7 +67,7 @@ public class TeamInfoSpec implements Serializable
      * @param sourceDataClassification
      *     Which type of source data this team handles.
      * @param dpiaLinks
-     *     A list of links to Personal Identifiable Information (PII) agreements are located.
+     *     A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser).
      */
     public TeamInfoSpec(List<SourceDataClassification> sourceDataClassification, List<StatisticalProduct> statisticalProducts, List<URI> dpiaLinks) {
         super();
@@ -117,7 +117,7 @@ public class TeamInfoSpec implements Serializable
     }
 
     /**
-     * A list of links to Personal Identifiable Information (PII) agreements are located
+     * A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)
      * 
      */
     @JsonProperty("dpia_links")
@@ -126,7 +126,7 @@ public class TeamInfoSpec implements Serializable
     }
 
     /**
-     * A list of links to Personal Identifiable Information (PII) agreements are located
+     * A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)
      * 
      */
     @JsonProperty("dpia_links")
