@@ -8,7 +8,7 @@
       "version": "kuben/v1",
       "kind": "TeamInfo",
       "metadata": {
-        "team_name": "my-team-name",
+        "team_name": "my-team-name"
       },
       "spec": {
         "source_data_classification": [
