@@ -19,21 +19,31 @@
       "properties": {
         "folder_iam": {
           "type": "object",
+          "$comment": "Should be implemented by patternProperties, but that is not supported by the jsonschema library we use. See https://github.com/joelittlejohn/jsonschema2pojo/issues/182",
           "properties": {
             "dev": {
               "type": "object",
               "javaName": "FolderIamDev",
-              "description": "Map of role and list of AD groups to have this role"
+              "description": "Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no",
+              "propertyNames": {
+                "pattern": "^[a-zA-Z_./]*$"
+              }
             },
             "test": {
               "type": "object",
               "javaName": "FolderIamTest",
-              "description": "Map of role and list of AD groups to have this role"
+              "description": "Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no",
+              "propertyNames": {
+                "pattern": "^[a-zA-Z_./]*$"
+              }
             },
             "prod": {
               "type": "object",
               "javaName": "FolderIamProd",
-              "description": "Map of role and list of AD groups to have this role"
+              "description": "Map of role and list of roles to entities to have this role. Group name or fully qualified email address, e.g. user:someuser@ssb.no",
+              "propertyNames": {
+                "pattern": "^[a-zA-Z_./]*$"
+              }
             }
           }
         }
@@ -41,7 +51,9 @@
     },
     "github": {
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
         "iac_repo": {
           "type": "object",
@@ -60,7 +72,9 @@
     },
     "atlantis": {
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
         "name": {
           "type": "string",
@@ -93,5 +107,8 @@
       }
     }
   },
-  "required": ["display_name", "uniform_name"]
+  "required": [
+    "display_name",
+    "uniform_name"
+  ]
 }
