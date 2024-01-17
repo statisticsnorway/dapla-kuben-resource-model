@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 
@@ -36,23 +35,19 @@ public class TeamInfoMetadataSchema implements Serializable
 
     /**
      * The (uniform) name of this team
-     * (Required)
      * 
      */
     @JsonProperty("team_name")
     @JsonPropertyDescription("The (uniform) name of this team")
     @Size(min = 1)
-    @NotNull
     private String teamName;
     /**
      * Name of this resource
-     * (Required)
      * 
      */
     @JsonProperty("name")
     @JsonPropertyDescription("Name of this resource")
     @Size(min = 1)
-    @NotNull
     private String name;
     /**
      * Whenever the metadata in this manifest is considered to be exposed in e.g. a portal. Will default to public if not specified
@@ -95,7 +90,6 @@ public class TeamInfoMetadataSchema implements Serializable
 
     /**
      * The (uniform) name of this team
-     * (Required)
      * 
      */
     @JsonProperty("team_name")
@@ -105,7 +99,6 @@ public class TeamInfoMetadataSchema implements Serializable
 
     /**
      * The (uniform) name of this team
-     * (Required)
      * 
      */
     @JsonProperty("team_name")
@@ -115,7 +108,6 @@ public class TeamInfoMetadataSchema implements Serializable
 
     /**
      * Name of this resource
-     * (Required)
      * 
      */
     @JsonProperty("name")
@@ -125,7 +117,6 @@ public class TeamInfoMetadataSchema implements Serializable
 
     /**
      * Name of this resource
-     * (Required)
      * 
      */
     @JsonProperty("name")
