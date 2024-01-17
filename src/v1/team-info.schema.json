@@ -84,7 +84,7 @@
         },
         "dpia_links": {
           "type": "array",
-          "description": "A list of links to Personal Identifiable Information (PII) agreements are located",
+          "description": "A list of links to Data Protection Impact Assessments (DPIA) (norwegian: personvernkonsekvenser)",
           "items": {
             "type": "string",
             "format": "uri"
