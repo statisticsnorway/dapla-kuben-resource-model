@@ -9,12 +9,10 @@
       "version": "kuben/v1",
       "kind": "PlatformManagedTeamInfo",
       "metadata": {
-        "team_name": "dapla-platform",
-        "name": "team-info"
+        "team_name": "dapla-platform"
       },
       "spec": {
-        "section_code": "724",
-        "display_name": "Dapla Platform"
+        "section_code": "724"
       }
     }
   ],
