@@ -17,13 +17,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import no.ssb.dapla.kuben.partials.v1.TeamInfoMetadataSchema;
 
 
 /**
  * AdditionalTeamInfo
  * <p>
- * Additional fields to express custom team information
+ * Additional fields to express custom team information Information the team can add without any restrictions on what kind of data is specified. Can be useful in situations where teams want to express or communicate some kind of information without it fitting the defined team info model.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -44,6 +45,7 @@ public class AdditionalTeamInfo implements Serializable
      */
     @JsonProperty("version")
     @JsonPropertyDescription("The version of this specification")
+    @Pattern(regexp = "^kuben/v[0-9]+$")
     @NotNull
     private String version;
     /**

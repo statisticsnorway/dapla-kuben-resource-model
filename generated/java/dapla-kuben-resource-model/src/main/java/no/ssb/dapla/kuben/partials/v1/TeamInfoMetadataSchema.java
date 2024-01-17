@@ -27,6 +27,7 @@ import jakarta.validation.constraints.Size;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "team_name",
+    "name",
     "visibility"
 })
 @Generated("jsonschema2pojo")
@@ -34,15 +35,25 @@ public class TeamInfoMetadataSchema implements Serializable
 {
 
     /**
-     * Name of this resource
+     * The (uniform) name of this team
      * (Required)
      * 
      */
     @JsonProperty("team_name")
-    @JsonPropertyDescription("Name of this resource")
+    @JsonPropertyDescription("The (uniform) name of this team")
     @Size(min = 1)
     @NotNull
     private String teamName;
+    /**
+     * Name of this resource
+     * (Required)
+     * 
+     */
+    @JsonProperty("name")
+    @JsonPropertyDescription("Name of this resource")
+    @Size(min = 1)
+    @NotNull
+    private String name;
     /**
      * Whenever the metadata in this manifest is considered to be exposed in e.g. a portal. Will default to public if not specified
      * 
@@ -53,7 +64,7 @@ public class TeamInfoMetadataSchema implements Serializable
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = 1258206655867380465L;
+    private final static long serialVersionUID = -6567017345717248345L;
 
     /**
      * No args constructor for use in serialization
@@ -65,13 +76,16 @@ public class TeamInfoMetadataSchema implements Serializable
     /**
      * 
      * @param teamName
-     *     Name of this resource.
+     *     The (uniform) name of this team.
      * @param visibility
      *     Whenever the metadata in this manifest is considered to be exposed in e.g. a portal. Will default to public if not specified.
+     * @param name
+     *     Name of this resource.
      */
-    public TeamInfoMetadataSchema(String teamName, TeamInfoMetadataSchema.Visibility visibility) {
+    public TeamInfoMetadataSchema(String teamName, String name, TeamInfoMetadataSchema.Visibility visibility) {
         super();
         this.teamName = teamName;
+        this.name = name;
         this.visibility = visibility;
     }
 
@@ -80,7 +94,7 @@ public class TeamInfoMetadataSchema implements Serializable
     }
 
     /**
-     * Name of this resource
+     * The (uniform) name of this team
      * (Required)
      * 
      */
@@ -90,13 +104,33 @@ public class TeamInfoMetadataSchema implements Serializable
     }
 
     /**
-     * Name of this resource
+     * The (uniform) name of this team
      * (Required)
      * 
      */
     @JsonProperty("team_name")
     public void setTeamName(String teamName) {
         this.teamName = teamName;
+    }
+
+    /**
+     * Name of this resource
+     * (Required)
+     * 
+     */
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Name of this resource
+     * (Required)
+     * 
+     */
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -135,6 +169,10 @@ public class TeamInfoMetadataSchema implements Serializable
         sb.append('=');
         sb.append(((this.teamName == null)?"<null>":this.teamName));
         sb.append(',');
+        sb.append("name");
+        sb.append('=');
+        sb.append(((this.name == null)?"<null>":this.name));
+        sb.append(',');
         sb.append("visibility");
         sb.append('=');
         sb.append(((this.visibility == null)?"<null>":this.visibility));
@@ -155,6 +193,7 @@ public class TeamInfoMetadataSchema implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.teamName == null)? 0 :this.teamName.hashCode()));
+        result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         result = ((result* 31)+((this.visibility == null)? 0 :this.visibility.hashCode()));
         return result;
@@ -169,7 +208,7 @@ public class TeamInfoMetadataSchema implements Serializable
             return false;
         }
         TeamInfoMetadataSchema rhs = ((TeamInfoMetadataSchema) other);
-        return ((((this.teamName == rhs.teamName)||((this.teamName!= null)&&this.teamName.equals(rhs.teamName)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.visibility == rhs.visibility)||((this.visibility!= null)&&this.visibility.equals(rhs.visibility))));
+        return (((((this.teamName == rhs.teamName)||((this.teamName!= null)&&this.teamName.equals(rhs.teamName)))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.visibility == rhs.visibility)||((this.visibility!= null)&&this.visibility.equals(rhs.visibility))));
     }
 
     public static class TeamInfoMetadataSchemaBuilder
@@ -181,8 +220,8 @@ public class TeamInfoMetadataSchema implements Serializable
             super();
         }
 
-        public TeamInfoMetadataSchemaBuilder(String teamName, TeamInfoMetadataSchema.Visibility visibility) {
-            super(teamName, visibility);
+        public TeamInfoMetadataSchemaBuilder(String teamName, String name, TeamInfoMetadataSchema.Visibility visibility) {
+            super(teamName, name, visibility);
         }
 
     }
@@ -200,10 +239,10 @@ public class TeamInfoMetadataSchema implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public TeamInfoMetadataSchemaBuilderBase(String teamName, TeamInfoMetadataSchema.Visibility visibility) {
+        public TeamInfoMetadataSchemaBuilderBase(String teamName, String name, TeamInfoMetadataSchema.Visibility visibility) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(TeamInfoMetadataSchema.TeamInfoMetadataSchemaBuilder.class)) {
-                this.instance = ((T) new TeamInfoMetadataSchema(teamName, visibility));
+                this.instance = ((T) new TeamInfoMetadataSchema(teamName, name, visibility));
             }
         }
 
@@ -216,6 +255,11 @@ public class TeamInfoMetadataSchema implements Serializable
 
         public TeamInfoMetadataSchema.TeamInfoMetadataSchemaBuilderBase withTeamName(String teamName) {
             ((TeamInfoMetadataSchema) this.instance).teamName = teamName;
+            return this;
+        }
+
+        public TeamInfoMetadataSchema.TeamInfoMetadataSchemaBuilderBase withName(String name) {
+            ((TeamInfoMetadataSchema) this.instance).name = name;
             return this;
         }
 

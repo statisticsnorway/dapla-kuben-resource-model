@@ -44,18 +44,13 @@
       },
       "additionalProperties": false,
       "required": [
-        "section_code",
-        "display_name"
+        "section_code"
       ],
       "properties": {
         "section_code": {
           "type": "string",
           "pattern": "[0-9]{3}",
           "description": "The code of the section this teams belong to"
-        },
-        "display_name": {
-          "type": "string",
-          "description": "The display name of the team"
         }
       }
     }

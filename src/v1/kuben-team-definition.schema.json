@@ -10,6 +10,10 @@
       "type": "string",
       "pattern": "^[a-z-]*$"
     },
+    "display_name": {
+      "type": "string",
+      "description": "The human readable form of the teams name"
+    },
     "gcp": {
       "type": "object",
       "properties": {
@@ -89,5 +93,5 @@
       }
     }
   },
-  "required": ["uniform_name"]
+  "required": ["display_name", "uniform_name"]
 }
