@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import no.ssb.dapla.kuben.partials.v1.TeamInfoMetadataSchema;
 
 
 /**
@@ -81,7 +80,7 @@ public class AdditionalTeamInfo implements Serializable
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = 7076277506292465438L;
+    private final static long serialVersionUID = -5619746270560269015L;
 
     /**
      * No args constructor for use in serialization
