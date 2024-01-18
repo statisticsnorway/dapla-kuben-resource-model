@@ -9,7 +9,7 @@
     "uniform_name": {
       "type": "string",
       "pattern": "^[a-z-]*$",
-      "maxLength": 16
+      "maxLength": 17
     },
     "display_name": {
       "type": "string",
