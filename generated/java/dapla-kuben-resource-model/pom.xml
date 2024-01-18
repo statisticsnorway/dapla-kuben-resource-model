@@ -3,7 +3,7 @@
     <groupId>no.ssb.dapla.kuben</groupId>
     <artifactId>dapla-kuben-resource-model</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.6</version>
+    <version>1.0.7-SNAPSHOT</version>
     <name>dapla-kuben-resource-model</name>
 
     <properties>
@@ -31,7 +31,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/${github.repository}.git</developerConnection>
         <url>https://github.com/${github.repository}</url>
-        <tag>java-v1.0.6</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <dependencies>
