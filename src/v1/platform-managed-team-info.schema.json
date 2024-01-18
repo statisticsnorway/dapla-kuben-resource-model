@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/kuben/v1/platform-managed-team-info.schema.json",
+  "$id": "https://statisticsnorway.github.io/dapla-kuben-resource-model/v1/platform-managed-team-info.schema.json",
   "title": "PlatformManagedTeamInfo",
   "description": "Information about the team that the platform team manages.",
   "$comment": "Team information that is not strictly required for configuration of the team",
@@ -31,7 +31,8 @@
       ]
     },
     "metadata": {
-      "$ref": "../partials/v1/team-info-metadata.schema.json",
+      "$comment": "Resolves to the schema hosted on github pages. Change to '../partials/v1/team-info-metadata.schema.json' for local development. Suboptimal solution, but pre-commit and jsonschema2pojo behaves differently, and we think it's more important that pre-commit works.",
+      "$ref": "https://statisticsnorway.github.io/dapla-kuben-resource-model/partials/v1/team-info-metadata.schema.json",
       "required": [
         "team_name"
       ]

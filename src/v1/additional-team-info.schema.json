@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/kuben/v1/additional-team-info.schema.json",
+  "$id": "https://statisticsnorway.github.io/dapla-kuben-resource-model/v1/additional-team-info.schema.json",
   "title": "AdditionalTeamInfo",
   "description": "Additional fields to express custom team information",
   "$comment": "Information the team can add without any restrictions on what kind of data is specified. Can be useful in situations where teams want to express or communicate some kind of information without it fitting the defined team info model.",
@@ -32,7 +32,8 @@
       ]
     },
     "metadata": {
-      "$ref": "../partials/v1/team-info-metadata.schema.json",
+      "$comment": "Resolves to the schema hosted on github pages. Change to '../partials/v1/team-info-metadata.schema.json' for local development. Suboptimal solution, but pre-commit and jsonschema2pojo behaves differently, and we think it's more important that pre-commit works.",
+      "$ref": "https://statisticsnorway.github.io/dapla-kuben-resource-model/partials/v1/team-info-metadata.schema.json",
       "required": [
         "name",
         "team_name"

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/kuben/v1/platform-manged-team-metadata.schema.json",
+  "$id": "https://statisticsnorway.github.io/dapla-kuben-resource-model/v1/kuben-team-definition.schema.json",
   "title": "KubenTeamDefinition",
   "description": "The definition of a team inside Kuben",
   "$comment": "Fields that are important for the technical configuration of a team",
