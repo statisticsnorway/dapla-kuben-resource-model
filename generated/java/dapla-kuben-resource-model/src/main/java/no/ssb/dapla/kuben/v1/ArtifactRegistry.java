@@ -34,17 +34,17 @@ public class ArtifactRegistry implements Serializable
     @Valid
     private List<String> formats = new ArrayList<String>();
     /**
-     * A list of github repos that should be able to push to artifact registry
+     * A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
      * 
      */
     @JsonProperty("repos")
-    @JsonPropertyDescription("A list of github repos that should be able to push to artifact registry")
+    @JsonPropertyDescription("A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.")
     @Valid
-    private List<Object> repos = new ArrayList<Object>();
+    private List<String> repos = new ArrayList<String>();
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = -7592682883344824911L;
+    private final static long serialVersionUID = -2223012852394825404L;
 
     /**
      * No args constructor for use in serialization
@@ -58,9 +58,9 @@ public class ArtifactRegistry implements Serializable
      * @param formats
      *     Set of formats - in upper case- to create artifact registries for, as defined in https://cloud.google.com/artifact-registry/docs/supported-formats . Examples is DOCKER, PYTHON.
      * @param repos
-     *     A list of github repos that should be able to push to artifact registry.
+     *     A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
      */
-    public ArtifactRegistry(List<String> formats, List<Object> repos) {
+    public ArtifactRegistry(List<String> formats, List<String> repos) {
         super();
         this.formats = formats;
         this.repos = repos;
@@ -89,20 +89,20 @@ public class ArtifactRegistry implements Serializable
     }
 
     /**
-     * A list of github repos that should be able to push to artifact registry
+     * A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
      * 
      */
     @JsonProperty("repos")
-    public List<Object> getRepos() {
+    public List<String> getRepos() {
         return repos;
     }
 
     /**
-     * A list of github repos that should be able to push to artifact registry
+     * A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
      * 
      */
     @JsonProperty("repos")
-    public void setRepos(List<Object> repos) {
+    public void setRepos(List<String> repos) {
         this.repos = repos;
     }
 
@@ -170,7 +170,7 @@ public class ArtifactRegistry implements Serializable
             super();
         }
 
-        public ArtifactRegistryBuilder(List<String> formats, List<Object> repos) {
+        public ArtifactRegistryBuilder(List<String> formats, List<String> repos) {
             super(formats, repos);
         }
 
@@ -189,7 +189,7 @@ public class ArtifactRegistry implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public ArtifactRegistryBuilderBase(List<String> formats, List<Object> repos) {
+        public ArtifactRegistryBuilderBase(List<String> formats, List<String> repos) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(ArtifactRegistry.ArtifactRegistryBuilder.class)) {
                 this.instance = ((T) new ArtifactRegistry(formats, repos));
@@ -208,7 +208,7 @@ public class ArtifactRegistry implements Serializable
             return this;
         }
 
-        public ArtifactRegistry.ArtifactRegistryBuilderBase withRepos(List<Object> repos) {
+        public ArtifactRegistry.ArtifactRegistryBuilderBase withRepos(List<String> repos) {
             ((ArtifactRegistry) this.instance).repos = repos;
             return this;
         }

@@ -36,11 +36,11 @@ public class Atlantis implements Serializable
     @NotNull
     private String name;
     /**
-     * Which repositories the team atlantis will monitor
+     * Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.
      * 
      */
     @JsonProperty("repos")
-    @JsonPropertyDescription("Which repositories the team atlantis will monitor")
+    @JsonPropertyDescription("Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.")
     @Valid
     private List<String> repos = new ArrayList<String>();
     @JsonIgnore
@@ -58,7 +58,7 @@ public class Atlantis implements Serializable
     /**
      * 
      * @param repos
-     *     Which repositories the team atlantis will monitor.
+     *     Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.
      * @param name
      *     The name of the atlantis instance.
      */
@@ -93,7 +93,7 @@ public class Atlantis implements Serializable
     }
 
     /**
-     * Which repositories the team atlantis will monitor
+     * Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.
      * 
      */
     @JsonProperty("repos")
@@ -102,7 +102,7 @@ public class Atlantis implements Serializable
     }
 
     /**
-     * Which repositories the team atlantis will monitor
+     * Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.
      * 
      */
     @JsonProperty("repos")

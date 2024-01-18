@@ -8,7 +8,8 @@
   "properties": {
     "uniform_name": {
       "type": "string",
-      "pattern": "^[a-z-]*$"
+      "pattern": "^[a-z-]*$",
+      "maxLength": 16
     },
     "display_name": {
       "type": "string",
@@ -82,9 +83,10 @@
         },
         "repos": {
           "type": "array",
-          "description": "Which repositories the team atlantis will monitor",
+          "description": "Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.",
           "items": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[a-zA-Z-_.0-9]*$"
           }
         }
       }
@@ -102,7 +104,11 @@
         },
         "repos": {
           "type": "array",
-          "description": "A list of github repos that should be able to push to artifact registry"
+          "description": "A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z-_.0-9]*$"
+          }
         }
       }
     }

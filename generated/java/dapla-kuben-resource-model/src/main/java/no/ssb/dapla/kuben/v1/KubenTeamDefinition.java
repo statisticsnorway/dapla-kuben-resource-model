@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 
 /**
@@ -43,6 +44,7 @@ public class KubenTeamDefinition implements Serializable
      */
     @JsonProperty("uniform_name")
     @Pattern(regexp = "^[a-z-]*$")
+    @Size(max = 16)
     @NotNull
     private String uniformName;
     /**
