@@ -15,7 +15,8 @@
     "team_name": {
       "description": "The (uniform) name of this team",
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 16
     },
     "name": {
       "description": "Name of this resource",
