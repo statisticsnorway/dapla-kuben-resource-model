@@ -39,7 +39,7 @@ public class TeamInfoMetadataSchema implements Serializable
      */
     @JsonProperty("team_name")
     @JsonPropertyDescription("The (uniform) name of this team")
-    @Size(min = 1, max = 16)
+    @Size(min = 1, max = 17)
     private String teamName;
     /**
      * Name of this resource
