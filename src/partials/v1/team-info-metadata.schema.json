@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dapla.ssb.no/core/v1/team-info-metadata.schema.json",
+  "$id": "https://statisticsnorway.github.io/dapla-kuben-resource-model/partials/v1/team-info-metadata.schema.json",
   "description": "The metadata fields common to all kinds/entities",
   "examples": [
     {
