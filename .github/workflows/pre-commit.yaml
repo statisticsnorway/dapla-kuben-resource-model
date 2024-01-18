@@ -1,6 +1,13 @@
 name: pre-commit
+# on push, not on branch main or release-java*
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
+      - '!release-java*'
 
-on: push
+
 
 jobs:
   pre-commit:
