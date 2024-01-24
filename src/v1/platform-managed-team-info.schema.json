@@ -53,6 +53,15 @@
           "type": "string",
           "pattern": "[0-9]{3}",
           "description": "The code of the section this teams belong to"
+        },
+        "autonomy_level": {
+          "type": "string",
+          "enum": [
+            "MANAGED",
+            "SEMI_MANAGED",
+            "SELF_MANAGED"
+          ],
+          "description": "The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources."
         }
       }
     }

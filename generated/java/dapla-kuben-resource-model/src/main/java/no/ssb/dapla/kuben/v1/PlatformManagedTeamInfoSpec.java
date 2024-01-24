@@ -2,11 +2,15 @@
 package no.ssb.dapla.kuben.v1;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.processing.Generated;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -17,7 +21,8 @@ import jakarta.validation.constraints.Pattern;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "section_code"
+    "section_code",
+    "autonomy_level"
 })
 @Generated("jsonschema2pojo")
 public class PlatformManagedTeamInfoSpec implements Serializable
@@ -33,7 +38,14 @@ public class PlatformManagedTeamInfoSpec implements Serializable
     @Pattern(regexp = "[0-9]{3}")
     @NotNull
     private String sectionCode;
-    private final static long serialVersionUID = -4116034070535887052L;
+    /**
+     * The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.
+     * 
+     */
+    @JsonProperty("autonomy_level")
+    @JsonPropertyDescription("The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.")
+    private PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel;
+    private final static long serialVersionUID = -1536793031518413103L;
 
     /**
      * No args constructor for use in serialization
@@ -44,12 +56,15 @@ public class PlatformManagedTeamInfoSpec implements Serializable
 
     /**
      * 
+     * @param autonomyLevel
+     *     The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.
      * @param sectionCode
      *     The code of the section this teams belong to.
      */
-    public PlatformManagedTeamInfoSpec(String sectionCode) {
+    public PlatformManagedTeamInfoSpec(String sectionCode, PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel) {
         super();
         this.sectionCode = sectionCode;
+        this.autonomyLevel = autonomyLevel;
     }
 
     public static PlatformManagedTeamInfoSpec.PlatformManagedTeamInfoSpecBuilderBase builder() {
@@ -76,6 +91,24 @@ public class PlatformManagedTeamInfoSpec implements Serializable
         this.sectionCode = sectionCode;
     }
 
+    /**
+     * The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.
+     * 
+     */
+    @JsonProperty("autonomy_level")
+    public PlatformManagedTeamInfoSpec.AutonomyLevel getAutonomyLevel() {
+        return autonomyLevel;
+    }
+
+    /**
+     * The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.
+     * 
+     */
+    @JsonProperty("autonomy_level")
+    public void setAutonomyLevel(PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel) {
+        this.autonomyLevel = autonomyLevel;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -83,6 +116,10 @@ public class PlatformManagedTeamInfoSpec implements Serializable
         sb.append("sectionCode");
         sb.append('=');
         sb.append(((this.sectionCode == null)?"<null>":this.sectionCode));
+        sb.append(',');
+        sb.append("autonomyLevel");
+        sb.append('=');
+        sb.append(((this.autonomyLevel == null)?"<null>":this.autonomyLevel));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -96,6 +133,7 @@ public class PlatformManagedTeamInfoSpec implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.sectionCode == null)? 0 :this.sectionCode.hashCode()));
+        result = ((result* 31)+((this.autonomyLevel == null)? 0 :this.autonomyLevel.hashCode()));
         return result;
     }
 
@@ -108,7 +146,53 @@ public class PlatformManagedTeamInfoSpec implements Serializable
             return false;
         }
         PlatformManagedTeamInfoSpec rhs = ((PlatformManagedTeamInfoSpec) other);
-        return ((this.sectionCode == rhs.sectionCode)||((this.sectionCode!= null)&&this.sectionCode.equals(rhs.sectionCode)));
+        return (((this.sectionCode == rhs.sectionCode)||((this.sectionCode!= null)&&this.sectionCode.equals(rhs.sectionCode)))&&((this.autonomyLevel == rhs.autonomyLevel)||((this.autonomyLevel!= null)&&this.autonomyLevel.equals(rhs.autonomyLevel))));
+    }
+
+
+    /**
+     * The level of autonomy the team has.. This says something about the level of control and responsibility the team has over their own resources.
+     * 
+     */
+    @Generated("jsonschema2pojo")
+    public enum AutonomyLevel {
+
+        MANAGED("MANAGED"),
+        SEMI_MANAGED("SEMI_MANAGED"),
+        SELF_MANAGED("SELF_MANAGED");
+        private final String value;
+        private final static Map<String, PlatformManagedTeamInfoSpec.AutonomyLevel> CONSTANTS = new HashMap<String, PlatformManagedTeamInfoSpec.AutonomyLevel>();
+
+        static {
+            for (PlatformManagedTeamInfoSpec.AutonomyLevel c: values()) {
+                CONSTANTS.put(c.value, c);
+            }
+        }
+
+        AutonomyLevel(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+
+        @JsonValue
+        public String value() {
+            return this.value;
+        }
+
+        @JsonCreator
+        public static PlatformManagedTeamInfoSpec.AutonomyLevel fromValue(String value) {
+            PlatformManagedTeamInfoSpec.AutonomyLevel constant = CONSTANTS.get(value);
+            if (constant == null) {
+                throw new IllegalArgumentException(value);
+            } else {
+                return constant;
+            }
+        }
+
     }
 
     public static class PlatformManagedTeamInfoSpecBuilder
@@ -120,8 +204,8 @@ public class PlatformManagedTeamInfoSpec implements Serializable
             super();
         }
 
-        public PlatformManagedTeamInfoSpecBuilder(String sectionCode) {
-            super(sectionCode);
+        public PlatformManagedTeamInfoSpecBuilder(String sectionCode, PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel) {
+            super(sectionCode, autonomyLevel);
         }
 
     }
@@ -139,10 +223,10 @@ public class PlatformManagedTeamInfoSpec implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public PlatformManagedTeamInfoSpecBuilderBase(String sectionCode) {
+        public PlatformManagedTeamInfoSpecBuilderBase(String sectionCode, PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(PlatformManagedTeamInfoSpec.PlatformManagedTeamInfoSpecBuilder.class)) {
-                this.instance = ((T) new PlatformManagedTeamInfoSpec(sectionCode));
+                this.instance = ((T) new PlatformManagedTeamInfoSpec(sectionCode, autonomyLevel));
             }
         }
 
@@ -155,6 +239,11 @@ public class PlatformManagedTeamInfoSpec implements Serializable
 
         public PlatformManagedTeamInfoSpec.PlatformManagedTeamInfoSpecBuilderBase withSectionCode(String sectionCode) {
             ((PlatformManagedTeamInfoSpec) this.instance).sectionCode = sectionCode;
+            return this;
+        }
+
+        public PlatformManagedTeamInfoSpec.PlatformManagedTeamInfoSpecBuilderBase withAutonomyLevel(PlatformManagedTeamInfoSpec.AutonomyLevel autonomyLevel) {
+            ((PlatformManagedTeamInfoSpec) this.instance).autonomyLevel = autonomyLevel;
             return this;
         }
 
