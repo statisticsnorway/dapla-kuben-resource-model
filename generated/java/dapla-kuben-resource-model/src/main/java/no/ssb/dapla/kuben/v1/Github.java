@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -21,8 +22,14 @@ import jakarta.validation.Valid;
 public class Github implements Serializable
 {
 
+    /**
+     * 
+     * (Required)
+     * 
+     */
     @JsonProperty("iac_repo")
     @Valid
+    @NotNull
     private IacRepo iacRepo;
     @JsonIgnore
     @Valid
@@ -45,11 +52,21 @@ public class Github implements Serializable
         return new Github.GithubBuilder();
     }
 
+    /**
+     * 
+     * (Required)
+     * 
+     */
     @JsonProperty("iac_repo")
     public IacRepo getIacRepo() {
         return iacRepo;
     }
 
+    /**
+     * 
+     * (Required)
+     * 
+     */
     @JsonProperty("iac_repo")
     public void setIacRepo(IacRepo iacRepo) {
         this.iacRepo = iacRepo;
