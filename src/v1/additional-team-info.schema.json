@@ -9,7 +9,9 @@
       "version": "kuben/v1",
       "kind": "AdditionalTeamInfo",
       "metadata": {
-        "name": "my-name"
+        "name": "my-name",
+        "team_name": "dapla-platform",
+        "visibility": "PUBLIC"
       },
       "spec": {
         "my-field": "123",

@@ -53,7 +53,7 @@
     "github": {
       "type": "object",
       "required": [
-        "name"
+        "iac_repo"
       ],
       "properties": {
         "iac_repo": {
