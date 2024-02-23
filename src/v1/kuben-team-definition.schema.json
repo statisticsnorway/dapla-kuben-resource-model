@@ -66,6 +66,19 @@
             "access": {
               "type": "object",
               "description": "Map of AD group to github role"
+            },
+            "branch_protection": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Enable the default Kuben set of branch protection rules"
+                },
+                "enforce_admins": {
+                  "type": "boolean",
+                  "description": "Do not allow repository admins to bypass branch protection rules (false required for Flux2 image update automation)"
+                }
+              }
             }
           }
         }
