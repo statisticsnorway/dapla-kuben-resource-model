@@ -17,7 +17,8 @@ import jakarta.validation.Valid;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "name",
-    "access"
+    "access",
+    "branch_protection"
 })
 @Generated("jsonschema2pojo")
 public class IacRepo implements Serializable
@@ -38,10 +39,13 @@ public class IacRepo implements Serializable
     @JsonPropertyDescription("Map of AD group to github role")
     @Valid
     private Access access;
+    @JsonProperty("branch_protection")
+    @Valid
+    private BranchProtection branchProtection;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = -455679121666188717L;
+    private final static long serialVersionUID = -4254896702421967978L;
 
     /**
      * No args constructor for use in serialization
@@ -57,10 +61,11 @@ public class IacRepo implements Serializable
      * @param name
      *     The name of the iac repo for this team.
      */
-    public IacRepo(String name, Access access) {
+    public IacRepo(String name, Access access, BranchProtection branchProtection) {
         super();
         this.name = name;
         this.access = access;
+        this.branchProtection = branchProtection;
     }
 
     public static IacRepo.IacRepoBuilderBase builder() {
@@ -103,6 +108,16 @@ public class IacRepo implements Serializable
         this.access = access;
     }
 
+    @JsonProperty("branch_protection")
+    public BranchProtection getBranchProtection() {
+        return branchProtection;
+    }
+
+    @JsonProperty("branch_protection")
+    public void setBranchProtection(BranchProtection branchProtection) {
+        this.branchProtection = branchProtection;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -125,6 +140,10 @@ public class IacRepo implements Serializable
         sb.append('=');
         sb.append(((this.access == null)?"<null>":this.access));
         sb.append(',');
+        sb.append("branchProtection");
+        sb.append('=');
+        sb.append(((this.branchProtection == null)?"<null>":this.branchProtection));
+        sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');
         sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
@@ -141,6 +160,7 @@ public class IacRepo implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
+        result = ((result* 31)+((this.branchProtection == null)? 0 :this.branchProtection.hashCode()));
         result = ((result* 31)+((this.access == null)? 0 :this.access.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         return result;
@@ -155,7 +175,7 @@ public class IacRepo implements Serializable
             return false;
         }
         IacRepo rhs = ((IacRepo) other);
-        return ((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.access == rhs.access)||((this.access!= null)&&this.access.equals(rhs.access))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return (((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.branchProtection == rhs.branchProtection)||((this.branchProtection!= null)&&this.branchProtection.equals(rhs.branchProtection))))&&((this.access == rhs.access)||((this.access!= null)&&this.access.equals(rhs.access))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
     public static class IacRepoBuilder
@@ -167,8 +187,8 @@ public class IacRepo implements Serializable
             super();
         }
 
-        public IacRepoBuilder(String name, Access access) {
-            super(name, access);
+        public IacRepoBuilder(String name, Access access, BranchProtection branchProtection) {
+            super(name, access, branchProtection);
         }
 
     }
@@ -186,10 +206,10 @@ public class IacRepo implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public IacRepoBuilderBase(String name, Access access) {
+        public IacRepoBuilderBase(String name, Access access, BranchProtection branchProtection) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(IacRepo.IacRepoBuilder.class)) {
-                this.instance = ((T) new IacRepo(name, access));
+                this.instance = ((T) new IacRepo(name, access, branchProtection));
             }
         }
 
@@ -207,6 +227,11 @@ public class IacRepo implements Serializable
 
         public IacRepo.IacRepoBuilderBase withAccess(Access access) {
             ((IacRepo) this.instance).access = access;
+            return this;
+        }
+
+        public IacRepo.IacRepoBuilderBase withBranchProtection(BranchProtection branchProtection) {
+            ((IacRepo) this.instance).branchProtection = branchProtection;
             return this;
         }
 
