@@ -20,7 +20,8 @@ import jakarta.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "name",
-    "repos"
+    "repos",
+    "folder_iam"
 })
 @Generated("jsonschema2pojo")
 public class Atlantis implements Serializable
@@ -43,10 +44,18 @@ public class Atlantis implements Serializable
     @JsonPropertyDescription("Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.")
     @Valid
     private List<String> repos = new ArrayList<String>();
+    /**
+     * Array of folder bindings to set for the Atlantis SA.
+     * 
+     */
+    @JsonProperty("folder_iam")
+    @JsonPropertyDescription("Array of folder bindings to set for the Atlantis SA.")
+    @Valid
+    private List<FolderIam__1> folderIam = new ArrayList<FolderIam__1>();
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = -5763719206269168949L;
+    private final static long serialVersionUID = 854245460037993476L;
 
     /**
      * No args constructor for use in serialization
@@ -59,13 +68,16 @@ public class Atlantis implements Serializable
      * 
      * @param repos
      *     Which repositories under Statistics Norway-organisation this team atlantis instance will monitor.
+     * @param folderIam
+     *     Array of folder bindings to set for the Atlantis SA.
      * @param name
      *     The name of the atlantis instance.
      */
-    public Atlantis(String name, List<String> repos) {
+    public Atlantis(String name, List<String> repos, List<FolderIam__1> folderIam) {
         super();
         this.name = name;
         this.repos = repos;
+        this.folderIam = folderIam;
     }
 
     public static Atlantis.AtlantisBuilderBase builder() {
@@ -110,6 +122,24 @@ public class Atlantis implements Serializable
         this.repos = repos;
     }
 
+    /**
+     * Array of folder bindings to set for the Atlantis SA.
+     * 
+     */
+    @JsonProperty("folder_iam")
+    public List<FolderIam__1> getFolderIam() {
+        return folderIam;
+    }
+
+    /**
+     * Array of folder bindings to set for the Atlantis SA.
+     * 
+     */
+    @JsonProperty("folder_iam")
+    public void setFolderIam(List<FolderIam__1> folderIam) {
+        this.folderIam = folderIam;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -132,6 +162,10 @@ public class Atlantis implements Serializable
         sb.append('=');
         sb.append(((this.repos == null)?"<null>":this.repos));
         sb.append(',');
+        sb.append("folderIam");
+        sb.append('=');
+        sb.append(((this.folderIam == null)?"<null>":this.folderIam));
+        sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');
         sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
@@ -150,6 +184,7 @@ public class Atlantis implements Serializable
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
+        result = ((result* 31)+((this.folderIam == null)? 0 :this.folderIam.hashCode()));
         return result;
     }
 
@@ -162,7 +197,7 @@ public class Atlantis implements Serializable
             return false;
         }
         Atlantis rhs = ((Atlantis) other);
-        return ((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
+        return (((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))))&&((this.folderIam == rhs.folderIam)||((this.folderIam!= null)&&this.folderIam.equals(rhs.folderIam))));
     }
 
     public static class AtlantisBuilder
@@ -174,8 +209,8 @@ public class Atlantis implements Serializable
             super();
         }
 
-        public AtlantisBuilder(String name, List<String> repos) {
-            super(name, repos);
+        public AtlantisBuilder(String name, List<String> repos, List<FolderIam__1> folderIam) {
+            super(name, repos, folderIam);
         }
 
     }
@@ -193,10 +228,10 @@ public class Atlantis implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public AtlantisBuilderBase(String name, List<String> repos) {
+        public AtlantisBuilderBase(String name, List<String> repos, List<FolderIam__1> folderIam) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(Atlantis.AtlantisBuilder.class)) {
-                this.instance = ((T) new Atlantis(name, repos));
+                this.instance = ((T) new Atlantis(name, repos, folderIam));
             }
         }
 
@@ -214,6 +249,11 @@ public class Atlantis implements Serializable
 
         public Atlantis.AtlantisBuilderBase withRepos(List<String> repos) {
             ((Atlantis) this.instance).repos = repos;
+            return this;
+        }
+
+        public Atlantis.AtlantisBuilderBase withFolderIam(List<FolderIam__1> folderIam) {
+            ((Atlantis) this.instance).folderIam = folderIam;
             return this;
         }
 
