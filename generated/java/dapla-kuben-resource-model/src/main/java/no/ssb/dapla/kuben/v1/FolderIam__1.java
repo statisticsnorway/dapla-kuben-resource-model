@@ -29,7 +29,7 @@ public class FolderIam__1 implements Serializable
      */
     @JsonProperty("folder")
     @JsonPropertyDescription("The folder number")
-    private Double folder;
+    private String folder;
     /**
      * The role to grant
      * 
@@ -40,7 +40,7 @@ public class FolderIam__1 implements Serializable
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = 3406351370337331750L;
+    private final static long serialVersionUID = 4921122945890958437L;
 
     /**
      * No args constructor for use in serialization
@@ -56,7 +56,7 @@ public class FolderIam__1 implements Serializable
      * @param role
      *     The role to grant.
      */
-    public FolderIam__1(Double folder, String role) {
+    public FolderIam__1(String folder, String role) {
         super();
         this.folder = folder;
         this.role = role;
@@ -71,7 +71,7 @@ public class FolderIam__1 implements Serializable
      * 
      */
     @JsonProperty("folder")
-    public Double getFolder() {
+    public String getFolder() {
         return folder;
     }
 
@@ -80,7 +80,7 @@ public class FolderIam__1 implements Serializable
      * 
      */
     @JsonProperty("folder")
-    public void setFolder(Double folder) {
+    public void setFolder(String folder) {
         this.folder = folder;
     }
 
@@ -166,7 +166,7 @@ public class FolderIam__1 implements Serializable
             super();
         }
 
-        public FolderIam__1Builder(Double folder, String role) {
+        public FolderIam__1Builder(String folder, String role) {
             super(folder, role);
         }
 
@@ -185,7 +185,7 @@ public class FolderIam__1 implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public FolderIam__1BuilderBase(Double folder, String role) {
+        public FolderIam__1BuilderBase(String folder, String role) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(FolderIam__1 .FolderIam__1Builder.class)) {
                 this.instance = ((T) new FolderIam__1(folder, role));
@@ -199,7 +199,7 @@ public class FolderIam__1 implements Serializable
             return result;
         }
 
-        public FolderIam__1 .FolderIam__1BuilderBase withFolder(Double folder) {
+        public FolderIam__1 .FolderIam__1BuilderBase withFolder(String folder) {
             ((FolderIam__1) this.instance).folder = folder;
             return this;
         }
