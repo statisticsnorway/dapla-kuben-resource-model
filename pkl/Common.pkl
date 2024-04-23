@@ -1,0 +1,10 @@
+module no.ssb.dapla.Common
+
+typealias ProjectId = String(matches(Regex("^[a-z][a-z1-9-]*[a-z1-9]$")))
+typealias Folder = String(matches(Regex("^folders/[0-9]+$")))
+typealias Organization = String(matches(Regex("^organizations/[0-9]+$")))
+
+typealias RMResource = ProjectId | Folder | Organization
+
+typealias IamMap = Mapping<RMResource, Listing<String>>
+typealias Env = "dev"|"test"|"prod"

@@ -1,0 +1,14 @@
+@go.Package { name = "github.com/statisticsnorway/kubenteam" }
+module no.ssb.dapla.AtlantisConfig
+
+import "package://pkg.pkl-lang.org/pkl-go/pkl.golang@0.6.0#/go.pkl"
+
+import "Common.pkl"
+
+name: String
+
+repos: Listing<String>(isDistinct)
+
+org_secrets: Listing<String>(isDistinct)
+
+folder_iam: Common.IamMap

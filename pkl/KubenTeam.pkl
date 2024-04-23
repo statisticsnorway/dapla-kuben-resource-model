@@ -1,0 +1,30 @@
+module no.ssb.dapla.KubenTeam
+
+import "GcpConfig.pkl"
+import "GitHubConfig.pkl"
+import "AtlantisConfig.pkl"
+
+uniform_name: String(matches(Regex("^[a-z][a-z-]*[a-z]")))
+display_name: String
+
+gcp: GcpConfig
+
+github: GitHubConfig = new {
+iac_repo {
+        name = "\(uniform_name)-iac"
+        access {
+            ["dapla-platform-developers"] = "admin"
+            ["\(uniform_name)-data-admins"] = "push"
+            ["\(uniform_name)-developers"] = "push"
+        }
+    }
+}
+
+atlantis: AtlantisConfig = new {
+  name = "atlantis-\(uniform_name)"
+
+  repos {
+      github.iac_repo.name
+  }
+}
+

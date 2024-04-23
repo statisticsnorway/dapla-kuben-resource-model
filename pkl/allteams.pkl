@@ -1,0 +1,12 @@
+import "KubenTeam.pkl"
+import* "teams/*.pkl" as all_teams
+
+teams: Mapping<String, KubenTeam> = new {
+    for (_, team in all_teams) {
+       [team.uniform_name] = team
+    }
+}
+
+output {
+    value = teams
+}

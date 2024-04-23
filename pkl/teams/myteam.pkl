@@ -1,0 +1,23 @@
+amends "../KubenTeam.pkl"
+
+    uniform_name = "my-team"
+    display_name = "My Team"
+
+    gcp {
+        folder_iam {
+            ["dev"] {
+                "roles/ssb.bucket.write"
+            }
+            for (folder in List("prod", "test")) {
+                [folder] {
+                    "roles/abc"
+                }
+            }
+        }
+    }
+
+    atlantis {
+        repos { // Appender
+            "abc"
+        }
+    }

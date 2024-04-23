@@ -1,0 +1,4 @@
+amends "../KubenTeam.pkl"
+
+    uniform_name = "other-team"
+    display_name = "Another Team"

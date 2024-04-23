@@ -1,0 +1,18 @@
+@go.Package { name = "github.com/statisticsnorway/kubenteam" }
+module no.ssb.dapla.GitHubConfig
+
+import "package://pkg.pkl-lang.org/pkl-go/pkl.golang@0.6.0#/go.pkl"
+
+class BranchProtection {
+  enforce_admins: Boolean = true
+}
+
+typealias Role = "admin"|"push"
+
+class IacRepo {
+  name: String
+  access: Mapping<String, Role>
+  branch_protection: BranchProtection
+}
+
+iac_repo: IacRepo 
