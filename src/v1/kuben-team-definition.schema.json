@@ -101,6 +101,23 @@
             "type": "string",
             "pattern": "^[a-zA-Z-_.0-9]*$"
           }
+        },
+        "folder_iam": {
+          "type": "array",
+          "description": "Array of folder bindings to set for the Atlantis SA.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "folder": {
+                "type": "string",
+                "description": "The folder number"
+              },
+              "role": {
+                "type": "string",
+                "description": "The role to grant"
+              }
+            }
+          }
         }
       }
     },
