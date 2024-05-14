@@ -21,6 +21,7 @@ import jakarta.validation.constraints.NotNull;
 @JsonPropertyOrder({
     "name",
     "repos",
+    "repo_config_override",
     "folder_iam"
 })
 @Generated("jsonschema2pojo")
@@ -45,6 +46,13 @@ public class Atlantis implements Serializable
     @Valid
     private List<String> repos = new ArrayList<String>();
     /**
+     * Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string.
+     * 
+     */
+    @JsonProperty("repo_config_override")
+    @JsonPropertyDescription("Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string.")
+    private String repoConfigOverride;
+    /**
      * Array of folder bindings to set for the Atlantis SA.
      * 
      */
@@ -55,7 +63,7 @@ public class Atlantis implements Serializable
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = 854245460037993476L;
+    private final static long serialVersionUID = -2127862757532224175L;
 
     /**
      * No args constructor for use in serialization
@@ -72,11 +80,14 @@ public class Atlantis implements Serializable
      *     Array of folder bindings to set for the Atlantis SA.
      * @param name
      *     The name of the atlantis instance.
+     * @param repoConfigOverride
+     *     Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string.
      */
-    public Atlantis(String name, List<String> repos, List<FolderIam__1> folderIam) {
+    public Atlantis(String name, List<String> repos, String repoConfigOverride, List<FolderIam__1> folderIam) {
         super();
         this.name = name;
         this.repos = repos;
+        this.repoConfigOverride = repoConfigOverride;
         this.folderIam = folderIam;
     }
 
@@ -123,6 +134,24 @@ public class Atlantis implements Serializable
     }
 
     /**
+     * Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string.
+     * 
+     */
+    @JsonProperty("repo_config_override")
+    public String getRepoConfigOverride() {
+        return repoConfigOverride;
+    }
+
+    /**
+     * Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string.
+     * 
+     */
+    @JsonProperty("repo_config_override")
+    public void setRepoConfigOverride(String repoConfigOverride) {
+        this.repoConfigOverride = repoConfigOverride;
+    }
+
+    /**
      * Array of folder bindings to set for the Atlantis SA.
      * 
      */
@@ -162,6 +191,10 @@ public class Atlantis implements Serializable
         sb.append('=');
         sb.append(((this.repos == null)?"<null>":this.repos));
         sb.append(',');
+        sb.append("repoConfigOverride");
+        sb.append('=');
+        sb.append(((this.repoConfigOverride == null)?"<null>":this.repoConfigOverride));
+        sb.append(',');
         sb.append("folderIam");
         sb.append('=');
         sb.append(((this.folderIam == null)?"<null>":this.folderIam));
@@ -182,6 +215,7 @@ public class Atlantis implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
+        result = ((result* 31)+((this.repoConfigOverride == null)? 0 :this.repoConfigOverride.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         result = ((result* 31)+((this.folderIam == null)? 0 :this.folderIam.hashCode()));
@@ -197,7 +231,7 @@ public class Atlantis implements Serializable
             return false;
         }
         Atlantis rhs = ((Atlantis) other);
-        return (((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))))&&((this.folderIam == rhs.folderIam)||((this.folderIam!= null)&&this.folderIam.equals(rhs.folderIam))));
+        return ((((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.repoConfigOverride == rhs.repoConfigOverride)||((this.repoConfigOverride!= null)&&this.repoConfigOverride.equals(rhs.repoConfigOverride))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))))&&((this.folderIam == rhs.folderIam)||((this.folderIam!= null)&&this.folderIam.equals(rhs.folderIam))));
     }
 
     public static class AtlantisBuilder
@@ -209,8 +243,8 @@ public class Atlantis implements Serializable
             super();
         }
 
-        public AtlantisBuilder(String name, List<String> repos, List<FolderIam__1> folderIam) {
-            super(name, repos, folderIam);
+        public AtlantisBuilder(String name, List<String> repos, String repoConfigOverride, List<FolderIam__1> folderIam) {
+            super(name, repos, repoConfigOverride, folderIam);
         }
 
     }
@@ -228,10 +262,10 @@ public class Atlantis implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public AtlantisBuilderBase(String name, List<String> repos, List<FolderIam__1> folderIam) {
+        public AtlantisBuilderBase(String name, List<String> repos, String repoConfigOverride, List<FolderIam__1> folderIam) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(Atlantis.AtlantisBuilder.class)) {
-                this.instance = ((T) new Atlantis(name, repos, folderIam));
+                this.instance = ((T) new Atlantis(name, repos, repoConfigOverride, folderIam));
             }
         }
 
@@ -249,6 +283,11 @@ public class Atlantis implements Serializable
 
         public Atlantis.AtlantisBuilderBase withRepos(List<String> repos) {
             ((Atlantis) this.instance).repos = repos;
+            return this;
+        }
+
+        public Atlantis.AtlantisBuilderBase withRepoConfigOverride(String repoConfigOverride) {
+            ((Atlantis) this.instance).repoConfigOverride = repoConfigOverride;
             return this;
         }
 
