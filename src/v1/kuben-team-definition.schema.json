@@ -102,6 +102,10 @@
             "pattern": "^[a-zA-Z-_.0-9]*$"
           }
         },
+        "repo_config_override": {
+            "type": "string",
+            "description": "Override values in this Atlantis' repos.yaml config. Values get merged on top of default values. Should be a valid YAML string."
+        },
         "folder_iam": {
           "type": "array",
           "description": "Array of folder bindings to set for the Atlantis SA.",
