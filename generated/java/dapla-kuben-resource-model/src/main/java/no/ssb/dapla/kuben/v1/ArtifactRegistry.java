@@ -19,6 +19,7 @@ import jakarta.validation.Valid;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "formats",
+    "location",
     "repos"
 })
 @Generated("jsonschema2pojo")
@@ -34,6 +35,13 @@ public class ArtifactRegistry implements Serializable
     @Valid
     private List<String> formats = new ArrayList<String>();
     /**
+     * The location for the artifact registry repositories.
+     * 
+     */
+    @JsonProperty("location")
+    @JsonPropertyDescription("The location for the artifact registry repositories.")
+    private String location;
+    /**
      * A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
      * 
      */
@@ -44,7 +52,7 @@ public class ArtifactRegistry implements Serializable
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = -2223012852394825404L;
+    private final static long serialVersionUID = 8182237757758119666L;
 
     /**
      * No args constructor for use in serialization
@@ -59,10 +67,13 @@ public class ArtifactRegistry implements Serializable
      *     Set of formats - in upper case- to create artifact registries for, as defined in https://cloud.google.com/artifact-registry/docs/supported-formats . Examples is DOCKER, PYTHON.
      * @param repos
      *     A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.
+     * @param location
+     *     The location for the artifact registry repositories.
      */
-    public ArtifactRegistry(List<String> formats, List<String> repos) {
+    public ArtifactRegistry(List<String> formats, String location, List<String> repos) {
         super();
         this.formats = formats;
+        this.location = location;
         this.repos = repos;
     }
 
@@ -86,6 +97,24 @@ public class ArtifactRegistry implements Serializable
     @JsonProperty("formats")
     public void setFormats(List<String> formats) {
         this.formats = formats;
+    }
+
+    /**
+     * The location for the artifact registry repositories.
+     * 
+     */
+    @JsonProperty("location")
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * The location for the artifact registry repositories.
+     * 
+     */
+    @JsonProperty("location")
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     /**
@@ -124,6 +153,10 @@ public class ArtifactRegistry implements Serializable
         sb.append('=');
         sb.append(((this.formats == null)?"<null>":this.formats));
         sb.append(',');
+        sb.append("location");
+        sb.append('=');
+        sb.append(((this.location == null)?"<null>":this.location));
+        sb.append(',');
         sb.append("repos");
         sb.append('=');
         sb.append(((this.repos == null)?"<null>":this.repos));
@@ -143,6 +176,7 @@ public class ArtifactRegistry implements Serializable
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.location == null)? 0 :this.location.hashCode()));
         result = ((result* 31)+((this.formats == null)? 0 :this.formats.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
@@ -158,7 +192,7 @@ public class ArtifactRegistry implements Serializable
             return false;
         }
         ArtifactRegistry rhs = ((ArtifactRegistry) other);
-        return ((((this.formats == rhs.formats)||((this.formats!= null)&&this.formats.equals(rhs.formats)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
+        return (((((this.location == rhs.location)||((this.location!= null)&&this.location.equals(rhs.location)))&&((this.formats == rhs.formats)||((this.formats!= null)&&this.formats.equals(rhs.formats))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
     }
 
     public static class ArtifactRegistryBuilder
@@ -170,8 +204,8 @@ public class ArtifactRegistry implements Serializable
             super();
         }
 
-        public ArtifactRegistryBuilder(List<String> formats, List<String> repos) {
-            super(formats, repos);
+        public ArtifactRegistryBuilder(List<String> formats, String location, List<String> repos) {
+            super(formats, location, repos);
         }
 
     }
@@ -189,10 +223,10 @@ public class ArtifactRegistry implements Serializable
         }
 
         @SuppressWarnings("unchecked")
-        public ArtifactRegistryBuilderBase(List<String> formats, List<String> repos) {
+        public ArtifactRegistryBuilderBase(List<String> formats, String location, List<String> repos) {
             // Skip initialization when called from subclass
             if (this.getClass().equals(ArtifactRegistry.ArtifactRegistryBuilder.class)) {
-                this.instance = ((T) new ArtifactRegistry(formats, repos));
+                this.instance = ((T) new ArtifactRegistry(formats, location, repos));
             }
         }
 
@@ -205,6 +239,11 @@ public class ArtifactRegistry implements Serializable
 
         public ArtifactRegistry.ArtifactRegistryBuilderBase withFormats(List<String> formats) {
             ((ArtifactRegistry) this.instance).formats = formats;
+            return this;
+        }
+
+        public ArtifactRegistry.ArtifactRegistryBuilderBase withLocation(String location) {
+            ((ArtifactRegistry) this.instance).location = location;
             return this;
         }
 
