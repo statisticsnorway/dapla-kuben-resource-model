@@ -136,6 +136,10 @@
             "pattern": "^[A-Z-_]*$"
           }
         },
+        "location": {
+          "type": "string",
+          "description": "The location for the artifact registry repositories."
+        },
         "repos": {
           "type": "array",
           "description": "A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.",
