@@ -128,17 +128,22 @@
     "artifact_registry": {
       "type": "object",
       "properties": {
-        "formats": {
+        "registries": {
           "type": "array",
-          "description": "Set of formats - in upper case- to create artifact registries for, as defined in https://cloud.google.com/artifact-registry/docs/supported-formats . Examples is DOCKER, PYTHON",
+          "description": "A list of registries/repositories to create",
           "items": {
-            "type": "string",
-            "pattern": "^[A-Z-_]*$"
+            "type": "object",
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "description": "The format of the registry, in upper case. See https://cloud.google.com/artifact-registry/docs/supported-formats."
+                },
+                "location": {
+                  "type": "string",
+                  "description": "The location for the registry."
+                }
+            }
           }
-        },
-        "location": {
-          "type": "string",
-          "description": "The location for the artifact registry repositories."
         },
         "repos": {
           "type": "array",
