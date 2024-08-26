@@ -43,7 +43,7 @@ public class KubenTeamDefinition implements Serializable
      * 
      */
     @JsonProperty("uniform_name")
-    @Pattern(regexp = "^[a-z-]*$")
+    @Pattern(regexp = "^[a-z][a-z0-9-]*$")
     @Size(max = 17)
     @NotNull
     private String uniformName;
