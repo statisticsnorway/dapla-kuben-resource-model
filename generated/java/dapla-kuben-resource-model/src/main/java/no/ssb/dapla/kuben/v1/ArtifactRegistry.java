@@ -3,13 +3,8 @@ package no.ssb.dapla.kuben.v1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.processing.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -41,10 +36,7 @@ public class ArtifactRegistry implements Serializable
     @JsonPropertyDescription("A list of github repositories under Statistics Norway-organisation that is allowed to push to Artifact Registry repositories of the team.")
     @Valid
     private List<String> repos = new ArrayList<String>();
-    @JsonIgnore
-    @Valid
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-    private final static long serialVersionUID = 2962162576379499060L;
+    private final static long serialVersionUID = 3072931046995312614L;
 
     /**
      * No args constructor for use in serialization
@@ -106,16 +98,6 @@ public class ArtifactRegistry implements Serializable
         this.repos = repos;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -127,10 +109,6 @@ public class ArtifactRegistry implements Serializable
         sb.append("repos");
         sb.append('=');
         sb.append(((this.repos == null)?"<null>":this.repos));
-        sb.append(',');
-        sb.append("additionalProperties");
-        sb.append('=');
-        sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -144,7 +122,6 @@ public class ArtifactRegistry implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.registries == null)? 0 :this.registries.hashCode()));
-        result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
         result = ((result* 31)+((this.repos == null)? 0 :this.repos.hashCode()));
         return result;
     }
@@ -158,7 +135,7 @@ public class ArtifactRegistry implements Serializable
             return false;
         }
         ArtifactRegistry rhs = ((ArtifactRegistry) other);
-        return ((((this.registries == rhs.registries)||((this.registries!= null)&&this.registries.equals(rhs.registries)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
+        return (((this.registries == rhs.registries)||((this.registries!= null)&&this.registries.equals(rhs.registries)))&&((this.repos == rhs.repos)||((this.repos!= null)&&this.repos.equals(rhs.repos))));
     }
 
     public static class ArtifactRegistryBuilder
@@ -210,11 +187,6 @@ public class ArtifactRegistry implements Serializable
 
         public ArtifactRegistry.ArtifactRegistryBuilderBase withRepos(List<String> repos) {
             ((ArtifactRegistry) this.instance).repos = repos;
-            return this;
-        }
-
-        public ArtifactRegistry.ArtifactRegistryBuilderBase withAdditionalProperty(String name, Object value) {
-            ((ArtifactRegistry) this.instance).additionalProperties.put(name, value);
             return this;
         }
 

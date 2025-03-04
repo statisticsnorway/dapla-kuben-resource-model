@@ -127,6 +127,7 @@
     },
     "artifact_registry": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "registries": {
           "type": "array",
