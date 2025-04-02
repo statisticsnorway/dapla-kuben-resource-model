@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Shared Buckets
+  description: |
+    Schema for describing shared buckets in dapla kuben structure
+  version: v1
+paths: {}
+components:
+  schemas:
+    SharedBucket:
+      type: object
+      description: Configuration of a shared bucket.
+      properties:
+        name:
+          type: string
+          description: Unique name identifying the bucket.
+        writtenToBy:
+          type: string
+          description: Specifies who has write access to the bucket.
+          enum:
+            - team/developers
+            - team/data-admins
+            - delomat
+          default: team/developers
+        sharedWith:
+          type: array
+          description: List of group names that this bucket is shared with.
+          items:
+            type: string
+            description: Identifier of the group, e.g. dapla-platform-developers.
+          minItems: 0
+          uniqueItems: true
+      required:
+        - name
+        - sharedWith
+    SharedBuckets:
+      type: object
+      description: "The description of the SharedBuckets data structure. Information and configuration of buckets this team share."
+      properties:
+        version:
+          type: string
+          description: The version of this specification
+          enum:
+            - kuben/v1
+        kind:
+          type: string
+          description: Resource identifier.
+          enum:
+            - SharedBuckets
+        buckets:
+          type: array
+          description: List of shared bucket configurations.
+          items:
+            $ref: '#/components/schemas/SharedBucket'
+          minItems: 0
+      required:
+        - version
+        - kind
+        - buckets
+
+# Example implementation:
+# version: kuben/v1
+# kind: SharedBuckets
+# buckets:
+# - name: delt1
+#   sharedWith:
+#   - team-1-developers
+# - name: delt2
+#   writtenToBy: delomat
+#   sharedWith:
+#   - team-2-developers
+# - name: delt3
+#   writtenToBy: team/data-admins
+#   sharedWith:
+#   - team-1-developers
