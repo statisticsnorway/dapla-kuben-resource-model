@@ -2,9 +2,8 @@ openapi: 3.1.0
 info:
   title: Shared Buckets
   description: |
-    Schema for describing shared buckets in dapla kuben structure
+    Schema for describing shared buckets in Dapla Kuben structure
   version: v1
-paths: {}
 components:
   schemas:
     SharedBucket:

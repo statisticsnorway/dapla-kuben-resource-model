@@ -4,3 +4,8 @@ repos:
     hooks:
       - id: check-metaschema
         files: ^src/.*\.json$
+  - repo: https://github.com/python-openapi/openapi-spec-validator
+    rev: 0.7.1
+    hooks:
+      - id: openapi-spec-validator
+        files: ^src/.*\.yaml

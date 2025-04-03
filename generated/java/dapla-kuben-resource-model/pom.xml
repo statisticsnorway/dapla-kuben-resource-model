@@ -25,6 +25,7 @@
         <!-- Plugin/extension versions -->
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
         <jsonschema2pojo-maven-plugin.version>1.2.1</jsonschema2pojo-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.12.0</openapi-generator-maven-plugin.version>
         <artifactregistry-maven-wagon.version>2.1.4</artifactregistry-maven-wagon.version>
     </properties>
 
@@ -82,6 +83,31 @@
                         <includes>
                             <include>**/*.json</include>
                         </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator-maven-plugin.version}</version>
+                    <configuration>
+                        <modelPackage>no.ssb.dapla.kuben</modelPackage>
+                        <generateModelTests>false</generateModelTests>
+                        <output>${basedir}</output>
+                        <verbose>true</verbose>
+                        <!-- Reference a single file for now, after a long fight with the generator and inputSpecRootDirectory which doesn't include components in the merged spec.. Postpone fix for next openapi schema -->
+                        <inputSpec>${basedir}/../../../src/v1/shared-buckets.schema.yaml</inputSpec>
+                        <generateSupportingFiles>false</generateSupportingFiles>
+                        <generatorName>java</generatorName>
+                        <configOptions>
+                            <sourceFolder>./src/main/java</sourceFolder>
+                        </configOptions>
                     </configuration>
                     <executions>
                         <execution>
