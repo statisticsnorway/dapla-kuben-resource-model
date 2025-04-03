@@ -51,7 +51,7 @@ import no.ssb.dapla.JSON;
 /**
  * The description of the SharedBuckets data structure. Information and configuration of buckets this team share.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-03T13:59:36.420296+02:00[Europe/Oslo]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-03T12:27:52.739099733Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedBuckets {
   /**
    * The version of this specification
