@@ -20,7 +20,8 @@
         <!-- Dependency versions -->
         <commons-lang.version>2.6</commons-lang.version>
         <jackson-databind.version>2.16.0</jackson-databind.version>
-        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+        <jakarta.validation-api.version>3.1.1</jakarta.validation-api.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
 
         <!-- Plugin/extension versions -->
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
@@ -50,6 +51,11 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>${jakarta.validation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -97,17 +103,22 @@
                     <artifactId>openapi-generator-maven-plugin</artifactId>
                     <version>${openapi-generator-maven-plugin.version}</version>
                     <configuration>
-                        <modelPackage>no.ssb.dapla.kuben</modelPackage>
+                        <modelPackage>no.ssb.dapla.kuben.v1</modelPackage>
                         <generateModelTests>false</generateModelTests>
                         <output>${basedir}</output>
                         <verbose>true</verbose>
+                        <!-- for use in set up configuration: <configHelp>true</configHelp>-->
+                        <library>native</library>
+                        <configOptions>
+                            <useJakartaEe>true</useJakartaEe>
+                            <serializationLibrary>jackson</serializationLibrary>
+                            <sourceFolder>./src/main/java</sourceFolder>
+                            <supportUrlQuery>false</supportUrlQuery>
+                        </configOptions>
                         <!-- Reference a single file for now, after a long fight with the generator and inputSpecRootDirectory which doesn't include components in the merged spec.. Postpone fix for next openapi schema -->
                         <inputSpec>${basedir}/../../../src/v1/shared-buckets.schema.yaml</inputSpec>
                         <generateSupportingFiles>false</generateSupportingFiles>
                         <generatorName>java</generatorName>
-                        <configOptions>
-                            <sourceFolder>./src/main/java</sourceFolder>
-                        </configOptions>
                     </configuration>
                     <executions>
                         <execution>
