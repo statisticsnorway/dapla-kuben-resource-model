@@ -33,28 +33,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   SharedBucket.JSON_PROPERTY_NAME,
-  SharedBucket.JSON_PROPERTY_WRITTEN_TO_BY,
+  SharedBucket.JSON_PROPERTY_TYPE,
   SharedBucket.JSON_PROPERTY_SHARED_WITH
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T12:41:00.766192262Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-08T08:37:18.011640966Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedBucket {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
   private String name;
 
   /**
-   * Specifies who has write access to the bucket.
+   * Specifies which kind of type and characteristics the shared bucket has.
    */
-  public enum WrittenToByEnum {
-    TEAM_DEVELOPERS(String.valueOf("team/developers")),
-    
-    TEAM_DATA_ADMINS(String.valueOf("team/data-admins")),
+  public enum TypeEnum {
+    STANDARD(String.valueOf("standard")),
     
     DELOMAT(String.valueOf("delomat"));
 
     private String value;
 
-    WrittenToByEnum(String value) {
+    TypeEnum(String value) {
       this.value = value;
     }
 
@@ -69,8 +67,8 @@ public class SharedBucket {
     }
 
     @JsonCreator
-    public static WrittenToByEnum fromValue(String value) {
-      for (WrittenToByEnum b : WrittenToByEnum.values()) {
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -79,9 +77,9 @@ public class SharedBucket {
     }
   }
 
-  public static final String JSON_PROPERTY_WRITTEN_TO_BY = "writtenToBy";
+  public static final String JSON_PROPERTY_TYPE = "type";
   @jakarta.annotation.Nullable
-  private WrittenToByEnum writtenToBy = WrittenToByEnum.TEAM_DEVELOPERS;
+  private TypeEnum type = TypeEnum.STANDARD;
 
   public static final String JSON_PROPERTY_SHARED_WITH = "sharedWith";
   @jakarta.annotation.Nonnull
@@ -114,27 +112,27 @@ public class SharedBucket {
   }
 
 
-  public SharedBucket writtenToBy(@jakarta.annotation.Nullable WrittenToByEnum writtenToBy) {
-    this.writtenToBy = writtenToBy;
+  public SharedBucket type(@jakarta.annotation.Nullable TypeEnum type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Specifies who has write access to the bucket.
-   * @return writtenToBy
+   * Specifies which kind of type and characteristics the shared bucket has.
+   * @return type
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WRITTEN_TO_BY)
+  @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public WrittenToByEnum getWrittenToBy() {
-    return writtenToBy;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WRITTEN_TO_BY)
+  @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWrittenToBy(@jakarta.annotation.Nullable WrittenToByEnum writtenToBy) {
-    this.writtenToBy = writtenToBy;
+  public void setType(@jakarta.annotation.Nullable TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -184,13 +182,13 @@ public class SharedBucket {
     }
     SharedBucket sharedBucket = (SharedBucket) o;
     return Objects.equals(this.name, sharedBucket.name) &&
-        Objects.equals(this.writtenToBy, sharedBucket.writtenToBy) &&
+        Objects.equals(this.type, sharedBucket.type) &&
         Objects.equals(this.sharedWith, sharedBucket.sharedWith);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, writtenToBy, sharedWith);
+    return Objects.hash(name, type, sharedWith);
   }
 
   @Override
@@ -198,7 +196,7 @@ public class SharedBucket {
     StringBuilder sb = new StringBuilder();
     sb.append("class SharedBucket {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    writtenToBy: ").append(toIndentedString(writtenToBy)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    sharedWith: ").append(toIndentedString(sharedWith)).append("\n");
     sb.append("}");
     return sb.toString();
