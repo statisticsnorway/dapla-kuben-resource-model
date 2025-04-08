@@ -13,14 +13,13 @@ components:
         name:
           type: string
           description: Unique name identifying the bucket.
-        writtenToBy:
+        type:
           type: string
-          description: Specifies who has write access to the bucket.
+          description: Specifies which kind of type and characteristics the shared bucket has.
           enum:
-            - team/developers
-            - team/data-admins
+            - standard
             - delomat
-          default: team/developers
+          default: standard
         sharedWith:
           type: array
           description: List of group names that this bucket is shared with.
@@ -65,10 +64,10 @@ components:
 #   sharedWith:
 #   - team-1-developers
 # - name: delt2
-#   writtenToBy: delomat
+#   type: delomat
 #   sharedWith:
 #   - team-2-developers
 # - name: delt3
-#   writtenToBy: team/data-admins
+#   type: standard
 #   sharedWith:
-#   - team-1-developers
+#   - team-2-developers
