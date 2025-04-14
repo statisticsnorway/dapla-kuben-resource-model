@@ -30,7 +30,6 @@ components:
           uniqueItems: true
       required:
         - name
-        - sharedWith
     SharedBuckets:
       type: object
       description: "The description of the SharedBuckets data structure. Information and configuration of buckets this team share."
