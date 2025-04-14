@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SharedBucket.JSON_PROPERTY_TYPE,
   SharedBucket.JSON_PROPERTY_SHARED_WITH
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-08T08:37:18.011640966Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-14T09:28:03.264969146Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedBucket {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
@@ -82,7 +82,7 @@ public class SharedBucket {
   private TypeEnum type = TypeEnum.STANDARD;
 
   public static final String JSON_PROPERTY_SHARED_WITH = "sharedWith";
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   private Set<String> sharedWith = new LinkedHashSet<>();
 
   public SharedBucket() { 
@@ -136,7 +136,7 @@ public class SharedBucket {
   }
 
 
-  public SharedBucket sharedWith(@jakarta.annotation.Nonnull Set<String> sharedWith) {
+  public SharedBucket sharedWith(@jakarta.annotation.Nullable Set<String> sharedWith) {
     this.sharedWith = sharedWith;
     return this;
   }
@@ -153,9 +153,9 @@ public class SharedBucket {
    * List of group names that this bucket is shared with.
    * @return sharedWith
    */
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SHARED_WITH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getSharedWith() {
     return sharedWith;
   }
@@ -163,8 +163,8 @@ public class SharedBucket {
 
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_SHARED_WITH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSharedWith(@jakarta.annotation.Nonnull Set<String> sharedWith) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWith(@jakarta.annotation.Nullable Set<String> sharedWith) {
     this.sharedWith = sharedWith;
   }
 
