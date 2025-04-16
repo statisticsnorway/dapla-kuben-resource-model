@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Shared Buckets
+  description: |
+    Schema for describing shared buckets in Dapla Kuben structure
+  version: v1
+components:
+  schemas:
+    SharedBucket:
+      type: object
+      description: Configuration of a shared bucket.
+      properties:
+        name:
+          type: string
+          description: Unique name identifying the bucket.
+        type:
+          type: string
+          description: Specifies which kind of type and characteristics the shared bucket has.
+          enum:
+            - standard
+            - delomat
+          default: standard
+        sharedWith:
+          type: array
+          description: List of group names that this bucket is shared with.
+          items:
+            type: string
+            description: Identifier of the group, e.g. dapla-platform-developers.
+          minItems: 0
+          uniqueItems: true
+      required:
+        - name
+    SharedBuckets:
+      type: object
+      description: "The description of the SharedBuckets data structure. Information and configuration of buckets this team share."
+      properties:
+        version:
+          type: string
+          description: The version of this specification
+          enum:
+            - kuben/v1
+        kind:
+          type: string
+          description: Resource identifier.
+          enum:
+            - SharedBuckets
+        buckets:
+          type: array
+          description: List of shared bucket configurations.
+          items:
+            $ref: '#/components/schemas/SharedBucket'
+          minItems: 0
+      required:
+        - version
+        - kind
+        - buckets
+
+# Example implementation:
+# version: kuben/v1
+# kind: SharedBuckets
+# buckets:
+# - name: delt1
+#   sharedWith:
+#   - team-1-developers
+# - name: delt2
+#   type: delomat
+#   sharedWith:
+#   - team-2-developers
+# - name: delt3
+#   type: standard
+#   sharedWith:
+#   - team-2-developers

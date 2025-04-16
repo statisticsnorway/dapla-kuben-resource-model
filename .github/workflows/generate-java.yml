@@ -41,6 +41,7 @@ jobs:
             pushd generated/java/dapla-kuben-resource-model
             rm -rf src/main/java
             ./mvnw jsonschema2pojo:generate
+            ./mvnw openapi-generator:generate
             popd
 
       - name: Check for modified files
