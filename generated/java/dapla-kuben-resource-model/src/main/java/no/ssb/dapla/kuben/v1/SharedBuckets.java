@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SharedBuckets.JSON_PROPERTY_KIND,
   SharedBuckets.JSON_PROPERTY_BUCKETS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-14T09:28:03.264969146Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-28T08:21:27.116798792Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedBuckets {
   /**
    * The version of this specification
